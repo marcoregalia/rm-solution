@@ -6,7 +6,7 @@ const year = new Date().getFullYear();
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-logo">RM<i>—</i>Solution</div>
+        <div class="footer-logo">RM<span>·</span>Solution</div>
         <p class="footer-tag">Direzione tecnica IT per PMI, startup e studi professionali.</p>
       </div>
       <div class="footer-col">
@@ -21,7 +21,7 @@ const year = new Date().getFullYear();
       <div class="footer-col">
         <div class="footer-col-label">Contatti</div>
         <ul>
-          <li><a href="mailto:marco@rm-solution.it">marco@rm-solution.it</a></li>
+          <li><a href="mailto:info@rm-solution.it">info@rm-solution.it</a></li>
           <li>Varese / Milano</li>
           <li><a href="https://www.linkedin.com/in/marcoregalia" rel="noopener" target="_blank">LinkedIn ↗</a></li>
         </ul>
@@ -37,16 +37,16 @@ const year = new Date().getFullYear();
     </div>
     <div class="footer-meta">
       <span>© {year} RM-Solution · Marco Regalia</span>
-      <span class="mono">v1.0 — sito statico, costruito con Astro</span>
+      <span class="mono">v2.0 — built with Astro</span>
     </div>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 64px 0 32px;
+    background: var(--bg-darker);
+    color: #fff;
+    padding: 56px 0 32px;
   }
   .footer-grid {
     display: grid;
@@ -55,24 +55,27 @@ const year = new Date().getFullYear();
     margin-bottom: 48px;
   }
   .footer-logo {
-    font-family: var(--font-serif);
-    font-size: 24px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
     margin-bottom: 12px;
+    color: #fff;
   }
-  .footer-logo i { font-style: italic; color: var(--accent-light); }
+  .footer-logo span { color: var(--blue); }
   .footer-tag {
     font-size: 13px;
-    color: #bcb6ab;
+    color: var(--text-light);
     line-height: 1.6;
     max-width: 300px;
   }
   .footer-col-label {
     font-family: var(--font-mono);
     font-size: 10px;
-    letter-spacing: 0.1em;
+    color: var(--text-light-muted);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #7a766f;
     margin-bottom: 16px;
+    font-weight: 500;
   }
   .footer-col ul {
     list-style: none;
@@ -82,17 +85,17 @@ const year = new Date().getFullYear();
   }
   .footer-col a, .footer-col li {
     font-size: 13px;
-    color: var(--paper);
+    color: #fff;
     transition: color 0.2s;
   }
-  .footer-col a:hover { color: var(--accent-light); }
+  .footer-col a:hover { color: var(--blue); }
   .footer-meta {
-    border-top: 0.5px solid #2a2925;
+    border-top: 0.5px solid var(--rule-dark);
     padding-top: 24px;
     display: flex;
     justify-content: space-between;
     font-size: 11px;
-    color: #7a766f;
+    color: var(--text-light-muted);
     flex-wrap: wrap;
     gap: 12px;
   }

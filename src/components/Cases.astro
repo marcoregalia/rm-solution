@@ -8,23 +8,26 @@ const fallback = [
   {
     settore: 'Studio legale',
     dimensione: '25 utenti',
-    risultato: '— zero downtime',
-    title: 'Migrazione Exchange on-premise verso Microsoft 365 senza interruzioni operative',
-    desc: 'Ambiente ibrido pianificato in tre fasi nell\'arco di sei settimane. Implementazione contestuale di MFA, antispam Libraesva e policy DLP. Nessuna mailbox persa, nessun appuntamento mancato.',
+    risultato: 'Zero downtime',
+    title: 'Migrazione Exchange → Microsoft 365',
+    desc: 'Ambiente ibrido in 3 fasi, 6 settimane. MFA + Libraesva + DLP. Zero mailbox perse.',
+    slug: null,
   },
   {
     settore: 'PMI manifatturiera',
     dimensione: '80 utenti',
-    risultato: '— RTO sotto le 4 ore',
-    title: 'Disaster recovery su Wasabi S3 con backup immutabili, sostituendo il sistema a nastro',
-    desc: 'Strategia 3-2-1 progettata da zero, replica offsite verso Wasabi con immutabilità a 30 giorni. Test di ripristino trimestrali documentati. Eliminazione completa dell\'infrastruttura tape.',
+    risultato: 'RTO < 4h',
+    title: 'Disaster recovery su Wasabi S3',
+    desc: 'Strategia 3-2-1 con immutabilità a 30gg. Test trimestrali documentati. Tape eliminato.',
+    slug: null,
   },
   {
     settore: 'Startup SaaS',
     dimensione: '15 dipendenti',
-    risultato: '— 6 mesi, ruolo Fractional CTO',
-    title: 'Architettura cloud da zero, dalla scelta dei vendor alla messa in produzione',
-    desc: 'Definizione dello stack su Microsoft Azure, selezione dei fornitori, implementazione di un CI/CD essenziale e di policy di sicurezza minime ma reali. Affiancamento e formazione del team tecnico interno.',
+    risultato: 'CTO 6 mesi',
+    title: 'Architettura Azure da zero alla produzione',
+    desc: 'Stack, vendor, CI/CD, policy di sicurezza. Affiancamento del lead developer.',
+    slug: null,
   },
 ];
 
@@ -32,91 +35,114 @@ const display = sorted.length > 0
   ? sorted.map(c => ({
       settore: c.data.settore,
       dimensione: c.data.dimensione,
-      risultato: c.data.risultato,
+      risultato: c.data.risultato.replace(/^—\s*/, ''),
       title: c.data.title,
-      desc: c.body.slice(0, 240),
+      desc: c.body.split('\n').filter(l => l.trim() && !l.startsWith('#'))[0]?.slice(0, 160) || '',
+      slug: c.slug,
     }))
   : fallback;
 ---
 
 <section class="section" id="casi">
   <div class="container">
-    <div class="section-head">
-      <span class="section-num">05 / CASI</span>
-      <h2>Tre interventi recenti, <i>raccontati senza filtro.</i></h2>
-      <p class="section-lede">
-        I clienti restano anonimi per riservatezza.
-        I numeri, le scelte tecniche e le difficoltà incontrate sono reali.
-      </p>
+    <span class="section-num">— 04 Casi studio</span>
+    <h2>Interventi reali, <span class="accent">numeri concreti.</span></h2>
+    <p class="section-lede">
+      Clienti anonimi per riservatezza. Scelte tecniche e risultati sono reali.
+    </p>
+    <div class="cases-list">
+      {display.map((c) => (
+        <article class="case-card">
+          <div class="case-meta">
+            <span class="case-sector">{c.settore} · {c.dimensione}</span>
+            <span class="case-result">{c.risultato}</span>
+          </div>
+          <h3>{c.title}</h3>
+          <p>{c.desc}</p>
+          {c.slug && (
+            <a href={`/casi-studio/${c.slug}/`} class="case-link">Leggi il caso completo →</a>
+          )}
+        </article>
+      ))}
     </div>
-    <div class="section-body">
-      <div></div>
-      <div class="section-content">
-        <div class="cases-list">
-          {display.map((c) => (
-            <article class="case">
-              <div class="case-meta">
-                <span class="case-sector">{c.settore} · {c.dimensione}</span>
-                <span class="case-result">{c.risultato}</span>
-              </div>
-              <h3>{c.title}</h3>
-              <p>{c.desc}</p>
-            </article>
-          ))}
-        </div>
-        <div class="cases-foot">
-          <a href="/casi-studio/" class="btn-link">Tutti i casi studio →</a>
-        </div>
-      </div>
+    <div class="cases-foot">
+      <a href="/casi-studio/" class="btn-link">Tutti i casi studio</a>
     </div>
   </div>
 </section>
 
 <style>
   .cases-list {
-    border-top: 0.5px solid var(--rule);
-  }
-  .case {
-    padding: 32px 0;
-    border-bottom: 0.5px solid var(--rule);
     display: flex;
     flex-direction: column;
     gap: 14px;
   }
+  .case-card {
+    background: #fff;
+    border: 0.5px solid var(--rule);
+    border-radius: 10px;
+    padding: 22px 22px 22px 26px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .case-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--blue);
+    box-shadow: 0 8px 24px rgba(30, 144, 255, 0.06);
+  }
+  .case-card::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--blue);
+  }
   .case-meta {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
     flex-wrap: wrap;
+    gap: 8px;
   }
   .case-sector {
     font-family: var(--font-mono);
     font-size: 10px;
-    letter-spacing: 0.1em;
-    color: var(--muted);
+    color: var(--text-soft);
+    letter-spacing: 0.06em;
     text-transform: uppercase;
+    font-weight: 500;
   }
   .case-result {
-    font-family: var(--font-serif);
-    font-style: italic;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue-deep);
+    background: var(--blue-bg);
+    padding: 4px 10px;
+    border-radius: 5px;
+  }
+  .case-card h3 {
     font-size: 17px;
-    color: var(--accent);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 8px;
+    letter-spacing: -0.012em;
   }
-  .case h3 {
-    font-family: var(--font-serif);
-    font-size: 22px;
-    line-height: 1.25;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    max-width: 560px;
-  }
-  .case p {
+  .case-card p {
     font-size: 14px;
-    color: var(--ink-soft);
-    line-height: 1.6;
-    max-width: 560px;
+    color: var(--text-soft);
+    line-height: 1.55;
+    margin-bottom: 12px;
   }
+  .case-link {
+    font-size: 13px;
+    color: var(--blue);
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  .case-link:hover { text-decoration: underline; }
   .cases-foot {
     margin-top: 32px;
   }

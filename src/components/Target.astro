@@ -1,93 +1,131 @@
 ---
 const targets = [
   {
-    title: 'PMI manifatturiere e di servizi',
-    desc: '20–150 dipendenti, area Varese e Milano. Un\'infrastruttura solida, gestita da una sola persona di riferimento, senza un IT manager interno.',
-    tag: 'Continuativa',
+    icon: 'building-factory-2',
+    title: 'PMI manifatturiere',
+    desc: '20–150 dipendenti, area Varese e Milano. Infrastruttura solida e gestita, senza un IT manager interno.',
+    tag: '— Continuativa',
   },
   {
-    title: 'Startup in fase di scale-up',
-    desc: 'Le decisioni tecniche delle prime fasi pesano per anni. Ti aiuto a prenderle bene — senza dover assumere un CTO a tempo pieno troppo presto.',
-    tag: 'Fractional',
+    icon: 'rocket',
+    title: 'Startup in scale-up',
+    desc: 'Decisioni tecniche solide nelle fasi critiche, senza assumere un CTO full-time troppo presto.',
+    tag: '— Fractional',
   },
   {
+    icon: 'briefcase',
     title: 'Studi professionali',
-    desc: 'Commercialisti, avvocati, notai. Riservatezza, GDPR e continuità operativa non sono compromessi negoziabili.',
-    tag: 'Compliance',
+    desc: 'Commercialisti, avvocati, notai. GDPR e continuità operativa non sono compromessi negoziabili.',
+    tag: '— Compliance',
   },
   {
+    icon: 'building',
     title: 'Aziende medie',
-    desc: 'Affianco team IT esistenti su progetti complessi: virtualizzazione, disaster recovery, migrazioni cloud, audit di sicurezza.',
-    tag: 'Consulenza',
+    desc: 'Affianco team IT su progetti complessi: virtualizzazione, DR, migrazioni cloud, audit di sicurezza.',
+    tag: '— Consulenza',
   },
 ];
 ---
 
 <section class="section" id="target">
   <div class="container">
-    <div class="section-head">
-      <span class="section-num">02 / TARGET</span>
-      <h2>Lavoro con quattro tipi di organizzazione, <i>una alla volta.</i></h2>
-    </div>
-    <div class="section-body">
-      <div></div>
-      <div class="section-content">
-        <div class="target-list">
-          {targets.map((t) => (
-            <div class="target-row">
-              <div class="target-text">
-                <h3>{t.title}</h3>
-                <p>{t.desc}</p>
-              </div>
-              <span class="target-tag">{t.tag}</span>
-            </div>
-          ))}
-        </div>
-      </div>
+    <span class="section-num">— 01 Target</span>
+    <h2>Lavoro con quattro tipi di organizzazione, <span class="accent">una alla volta.</span></h2>
+    <p class="section-lede">
+      Scelgo di lavorare con realtà che vogliono smettere di improvvisare sull'IT
+      e costruire un'infrastruttura solida nel tempo.
+    </p>
+    <div class="target-grid">
+      {targets.map((t) => (
+        <article class="target-card">
+          <div class="target-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              {t.icon === 'building-factory-2' && (
+                <>
+                  <path d="M3 21h18" /><path d="M3 21v-11l6 4v-4l6 4v-4l6 4v11" /><path d="M9 17h.01" /><path d="M15 17h.01" />
+                </>
+              )}
+              {t.icon === 'rocket' && (
+                <>
+                  <path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" /><path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" /><circle cx="15" cy="9" r="1" />
+                </>
+              )}
+              {t.icon === 'briefcase' && (
+                <>
+                  <rect x="3" y="7" width="18" height="13" rx="2" /><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" /><path d="M12 12l0 .01" /><path d="M3 13a20 20 0 0 0 18 0" />
+                </>
+              )}
+              {t.icon === 'building' && (
+                <>
+                  <rect x="4" y="4" width="16" height="16" rx="2" /><path d="M10 4v16" /><path d="M2 8h2" /><path d="M2 12h2" /><path d="M2 16h2" /><path d="M14 8h2" /><path d="M14 12h2" /><path d="M14 16h2" />
+                </>
+              )}
+            </svg>
+          </div>
+          <h3>{t.title}</h3>
+          <p>{t.desc}</p>
+          <span class="target-tag">{t.tag}</span>
+        </article>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  .target-list {
-    border-top: 0.5px solid var(--rule);
-  }
-  .target-row {
+  .target-grid {
     display: grid;
-    grid-template-columns: 1fr 110px;
-    gap: 24px;
-    padding: 24px 0;
-    border-bottom: 0.5px solid var(--rule);
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
   }
-  .target-row h3 {
-    font-family: var(--font-serif);
-    font-size: 24px;
-    line-height: 1.2;
-    font-weight: 400;
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
+  .target-card {
+    background: #fff;
+    border: 0.5px solid var(--rule);
+    border-radius: 10px;
+    padding: 22px;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
   }
-  .target-row p {
-    font-size: 14px;
-    color: var(--ink-soft);
+  .target-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(30, 144, 255, 0.08);
+  }
+  .target-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--blue-bg);
+    border: 0.5px solid rgba(30, 144, 255, 0.25);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    color: var(--blue-deep);
+  }
+  .target-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: -0.012em;
+    line-height: 1.3;
+  }
+  .target-card p {
+    font-size: 13px;
+    color: var(--text-soft);
     line-height: 1.55;
-    max-width: 540px;
+    margin-bottom: 12px;
   }
   .target-tag {
     font-family: var(--font-mono);
     font-size: 10px;
-    letter-spacing: 0.06em;
-    color: var(--muted);
+    color: var(--blue-deep);
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    text-align: right;
-    padding-top: 10px;
+    font-weight: 500;
   }
   @media (max-width: 600px) {
-    .target-row {
+    .target-grid {
       grid-template-columns: 1fr;
-      gap: 6px;
     }
-    .target-tag { text-align: left; padding-top: 0; }
   }
 </style>

@@ -31,13 +31,13 @@ const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0c1424" />
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate" type="application/rss+xml" title="RM-Solution Blog" href="/rss.xml" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -62,9 +62,7 @@ const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
       "name": "Marco Regalia",
       "jobTitle": "Senior System Administrator, Fractional CTO",
       "url": "https://www.rm-solution.it",
-      "sameAs": [
-        "https://www.linkedin.com/in/marcoregalia"
-      ],
+      "sameAs": ["https://www.linkedin.com/in/marcoregalia"],
       "knowsAbout": [
         "Cloud Computing", "Virtualization", "Cybersecurity",
         "Disaster Recovery", "VMware", "Microsoft Azure", "WatchGuard"

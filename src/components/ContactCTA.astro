@@ -1,86 +1,73 @@
 ---
 ---
 
-<section class="contact-cta">
+<section class="contact-cta dark-section">
+  <div class="glow-tr"></div>
   <div class="container">
-    <div class="contact-num">06 / CONTATTO</div>
-    <h2>Prima di un contratto, <i>una conversazione.</i></h2>
+    <span class="section-num">— 05 Contatti</span>
+    <h2>Prima di un contratto, <span class="accent">una conversazione.</span></h2>
     <p class="contact-text">
       Trenta minuti, senza impegno. Mi racconti la situazione, ti dico onestamente
       se posso esserti utile e in che forma. Se non lo sono, ti indico chi può.
     </p>
-    <a href="/contatti/" class="btn btn-light">Prenota una conversazione →</a>
+    <a href="/contatti/" class="btn btn-outline">Contattaci ora →</a>
 
-    <div class="contact-meta">
+    <div class="contact-info">
       <div>
-        <div class="contact-meta-label">Email</div>
-        <div class="contact-meta-val">marco@rm-solution.it</div>
+        <div class="contact-info-label">Email</div>
+        <div class="contact-info-val">info@rm-solution.it</div>
       </div>
       <div>
-        <div class="contact-meta-label">Sede</div>
-        <div class="contact-meta-val">Varese / Milano</div>
+        <div class="contact-info-label">Sede</div>
+        <div class="contact-info-val">Varese / Milano</div>
       </div>
       <div>
-        <div class="contact-meta-label">LinkedIn</div>
-        <div class="contact-meta-val">/in/marcoregalia</div>
+        <div class="contact-info-label">LinkedIn</div>
+        <div class="contact-info-val">/in/marcoregalia</div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .contact-cta {
-    background: var(--ink);
-    color: var(--paper);
-    padding: clamp(64px, 10vw, 112px) 0;
-  }
-  .contact-num {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: #9a958c;
-    letter-spacing: 0.1em;
-    margin-bottom: 32px;
-  }
   .contact-cta h2 {
-    font-family: var(--font-serif);
-    font-size: clamp(32px, 5vw, 52px);
-    line-height: 1.05;
+    font-size: clamp(28px, 4.5vw, 44px);
+    line-height: 1.1;
     letter-spacing: -0.025em;
-    font-weight: 400;
-    color: var(--paper);
-    max-width: 600px;
-    margin-bottom: 24px;
+    color: #fff;
+    margin-bottom: 16px;
+    max-width: 540px;
   }
-  .contact-cta h2 i { font-style: italic; color: var(--accent-light); }
   .contact-text {
     font-size: 15px;
-    line-height: 1.65;
-    color: #bcb6ab;
+    line-height: 1.6;
+    color: var(--text-light);
     max-width: 480px;
-    margin-bottom: 36px;
+    margin-bottom: 28px;
   }
-  .contact-meta {
-    margin-top: 56px;
+  .contact-info {
+    margin-top: 48px;
     padding-top: 32px;
-    border-top: 0.5px solid #2a2925;
+    border-top: 0.5px solid var(--rule-dark);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
-  .contact-meta-label {
+  .contact-info-label {
     font-family: var(--font-mono);
     font-size: 10px;
-    color: #7a766f;
-    letter-spacing: 0.1em;
+    color: var(--text-light-muted);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 6px;
   }
-  .contact-meta-val {
-    font-size: 14px;
-    color: var(--paper);
+  .contact-info-val {
+    font-size: 13px;
+    color: #fff;
+    font-weight: 500;
   }
   @media (max-width: 600px) {
-    .contact-meta {
+    .contact-info {
       grid-template-columns: 1fr;
       gap: 16px;
     }

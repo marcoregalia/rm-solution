@@ -1,31 +1,48 @@
 /* ============================================
-   RM-Solution — Global Styles
-   Design system editoriale premium
+   RM-Solution — Global Styles v2
+   Design system: deep blue night + electric blue
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Palette */
-  --paper: #f5f2ec;
-  --paper-dark: #ebe7df;
-  --ink: #161513;
-  --ink-soft: #3a3835;
-  --muted: #7a7670;
-  --rule: #cfc9bf;
-  --rule-strong: #a8a297;
-  --accent: #1f2d4d;
-  --accent-soft: #3d4d6e;
-  --accent-light: #a8b5d4;
+  /* Palette - Deep blue night theme */
+  --bg-dark: #0c1424;
+  --bg-darker: #080f1d;
+  --bg-card-dark: #111c30;
+  --bg-paper: #ffffff;
+  --bg-soft: #f6f9fc;
+  --bg-section: #ffffff;
 
-  /* Tipografia */
-  --font-serif: 'Instrument Serif', Georgia, serif;
+  /* Accent - Electric blue */
+  --blue: #1e90ff;
+  --blue-soft: #5eb1ff;
+  --blue-deep: #0c70d9;
+  --blue-glow: rgba(30, 144, 255, 0.18);
+  --blue-bg: rgba(30, 144, 255, 0.08);
+  --blue-border: rgba(30, 144, 255, 0.4);
+
+  /* Text */
+  --text: #0c1424;
+  --text-soft: #425466;
+  --muted: #8898aa;
+  --text-light: rgba(255, 255, 255, 0.72);
+  --text-light-soft: rgba(255, 255, 255, 0.6);
+  --text-light-muted: rgba(255, 255, 255, 0.5);
+
+  /* Borders */
+  --rule: #e0e7ee;
+  --rule-strong: #cbd5e0;
+  --rule-dark: rgba(255, 255, 255, 0.12);
+  --rule-dark-soft: rgba(255, 255, 255, 0.08);
+
+  /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  /* Spaziature */
-  --container-max: 1200px;
-  --container-padding: clamp(20px, 5vw, 48px);
+  /* Layout */
+  --container-max: 1100px;
+  --container-padding: clamp(20px, 5vw, 40px);
   --section-padding-y: clamp(48px, 8vw, 96px);
 }
 
@@ -37,15 +54,15 @@
 
 html {
   scroll-behavior: smooth;
-  font-feature-settings: 'ss01', 'cv11';
+  font-feature-settings: 'cv11', 'ss01';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   font-family: var(--font-sans);
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--bg-paper);
+  color: var(--text);
   font-size: 16px;
   line-height: 1.6;
   font-weight: 400;
@@ -69,29 +86,29 @@ button {
 }
 
 /* ============================================
-   Tipografia base
+   Typography
    ============================================ */
 
-.serif { font-family: var(--font-serif); font-weight: 400; }
-.mono { font-family: var(--font-mono); }
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+h1 .accent, h2 .accent, h3 .accent {
+  color: var(--blue-deep);
+}
 
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--blue-deep);
+  font-weight: 500;
 }
-
-h1, h2, h3, h4 {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  color: var(--ink);
-}
-
-h1 i, h2 i, h3 i { font-style: italic; color: var(--accent); }
 
 /* ============================================
    Container & Layout
@@ -108,55 +125,96 @@ h1 i, h2 i, h3 i { font-style: italic; color: var(--accent); }
   padding-top: var(--section-padding-y);
   padding-bottom: var(--section-padding-y);
   border-bottom: 0.5px solid var(--rule);
+  background: var(--bg-section);
 }
 
-.section-head {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 32px;
-  margin-bottom: 48px;
+.section.alt {
+  background: var(--bg-soft);
 }
 
 .section-num {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 0.1em;
-  padding-top: 8px;
+  color: var(--blue-deep);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 14px;
+  display: block;
 }
 
 .section h2 {
-  font-size: clamp(28px, 4vw, 42px);
-  max-width: 600px;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  max-width: 640px;
+}
+
+.section h2 .accent {
+  color: var(--blue-deep);
 }
 
 .section-lede {
-  grid-column: 2;
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--ink-soft);
-  margin-top: 16px;
-  max-width: 520px;
+  font-size: clamp(15px, 1.5vw, 17px);
+  line-height: 1.6;
+  color: var(--text-soft);
+  max-width: 560px;
+  margin-bottom: 36px;
 }
 
-.section-body {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 32px;
+/* ============================================
+   Dark sections (hero + contact)
+   ============================================ */
+
+.dark-section {
+  background: var(--bg-dark);
+  color: #fff;
+  padding-top: clamp(48px, 8vw, 96px);
+  padding-bottom: clamp(48px, 8vw, 96px);
+  position: relative;
+  overflow: hidden;
 }
 
-.section-body > .section-content {
-  grid-column: 2;
+.dark-section h1,
+.dark-section h2 {
+  color: #fff;
 }
 
-@media (max-width: 768px) {
-  .section-head, .section-body {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .section-lede { grid-column: 1; }
-  .section-body > .section-content { grid-column: 1; }
-  .section-num { padding-top: 0; }
+.dark-section h1 .accent,
+.dark-section h2 .accent {
+  color: var(--blue);
+}
+
+.dark-section .section-num {
+  color: var(--blue);
+}
+
+.dark-section .glow-tr {
+  position: absolute;
+  top: -100px;
+  right: -80px;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(30, 144, 255, 0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.dark-section .glow-bl {
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(30, 144, 255, 0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.dark-section > .container {
+  position: relative;
+  z-index: 1;
 }
 
 /* ============================================
@@ -166,38 +224,99 @@ h1 i, h2 i, h3 i { font-style: italic; color: var(--accent); }
 .btn {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 500;
-  padding: 14px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 22px;
   border: none;
   cursor: pointer;
-  letter-spacing: 0.01em;
-  transition: background 0.2s, color 0.2s;
+  letter-spacing: -0.005em;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
   text-align: center;
+  border-radius: 7px;
+  text-decoration: none;
 }
 
 .btn-primary {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--blue);
+  color: #fff;
 }
 
-.btn-primary:hover { background: var(--accent); }
-
-.btn-light {
-  background: var(--paper);
-  color: var(--ink);
+.btn-primary:hover {
+  background: var(--blue-deep);
 }
 
-.btn-light:hover { background: #fff; }
+.btn-outline {
+  background: transparent;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.btn-outline:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border: 0.5px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
 
 .btn-link {
   font-family: var(--font-sans);
-  font-size: 13px;
-  color: var(--ink);
-  border-bottom: 0.5px solid var(--ink);
-  padding-bottom: 2px;
+  font-size: 14px;
+  color: var(--blue);
+  font-weight: 500;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-link::after {
+  content: "→";
+  transition: transform 0.2s;
+}
+
+.btn-link:hover::after {
+  transform: translateX(3px);
+}
+
+/* ============================================
+   Tags / Pills
+   ============================================ */
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  background: var(--blue-bg);
+  border: 0.5px solid var(--blue-border);
+  border-radius: 20px;
+}
+
+.tag-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 8px var(--blue);
+  flex-shrink: 0;
+}
+
+.tag-pill-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* ============================================
@@ -214,30 +333,34 @@ h1 i, h2 i, h3 i { font-style: italic; color: var(--accent); }
 .form-label {
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--text-soft);
+  font-weight: 500;
 }
 
 .form-input,
 .form-textarea {
   font-family: var(--font-sans);
   font-size: 15px;
-  background: transparent;
-  border: none;
-  border-bottom: 0.5px solid var(--rule-strong);
-  padding: 10px 0;
-  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--rule-strong);
+  padding: 12px 14px;
+  color: var(--text);
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
   width: 100%;
+  border-radius: 7px;
 }
 
 .form-input:focus,
-.form-textarea:focus { border-bottom-color: var(--accent); }
+.form-textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-bg);
+}
 
 .form-textarea {
-  min-height: 120px;
+  min-height: 130px;
   resize: vertical;
   font-family: var(--font-sans);
 }
@@ -248,10 +371,12 @@ h1 i, h2 i, h3 i { font-style: italic; color: var(--accent); }
 
 .sr-only {
   position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
 }
