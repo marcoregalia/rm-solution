@@ -4,13 +4,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Contatti"
-  description="Prenota una conversazione esplorativa di trenta minuti con Marco Regalia. Senza impegno, senza costo."
+  description="Contatta RM-Solution di Marco Regalia per una conversazione esplorativa. Telefono, email, form di contatto. Sede a Gallarate (VA), interventi in tutta Italia."
 >
   <section class="contact-page">
     <div class="container contact-grid">
       <div class="contact-intro">
-        <span class="page-num">— CONTATTI</span>
-        <h1>Prima di un contratto, <i>una conversazione.</i></h1>
+        <span class="section-num">— Contatti</span>
+        <h1>Prima di un contratto, <span class="accent">una conversazione.</span></h1>
         <p class="contact-lede">
           Trenta minuti, senza impegno. Mi racconti la situazione, ti dico onestamente
           se posso esserti utile e in che forma. Se non lo sono, ti indico chi può.
@@ -19,24 +19,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="contact-info">
           <div class="info-row">
             <span class="info-label">Email</span>
-            <a href="mailto:marco@rm-solution.it">marco@rm-solution.it</a>
+            <a href="mailto:info@rm-solution.it">info@rm-solution.it</a>
           </div>
           <div class="info-row">
             <span class="info-label">Telefono</span>
-            <span>su richiesta, dopo il primo scambio</span>
+            <a href="tel:+393475400385">+39 347 540 0385</a>
           </div>
           <div class="info-row">
             <span class="info-label">Sede</span>
-            <span>Varese / Milano · remoto in tutta Italia</span>
+            <span>21013 Gallarate (VA)</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Operatività</span>
+            <span>Lombardia · remoto in tutta Italia</span>
           </div>
           <div class="info-row">
             <span class="info-label">LinkedIn</span>
-            <a href="https://www.linkedin.com/in/marcoregalia" target="_blank" rel="noopener">/in/marcoregalia ↗</a>
+            <a href="https://www.linkedin.com/in/marcoregalia" target="_blank" rel="noopener">
+              /in/marcoregalia ↗
+            </a>
           </div>
         </div>
       </div>
 
       <div class="contact-form-box">
+        <div class="form-eyebrow">— Form di contatto</div>
         <form
           class="contact-form"
           action="https://formspree.io/f/YOUR_FORM_ID"
@@ -106,25 +113,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     grid-template-columns: 1fr 1fr;
     gap: 64px;
   }
-  .page-num {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 24px;
-  }
   .contact-intro h1 {
     font-size: clamp(32px, 5vw, 48px);
     line-height: 1.05;
     letter-spacing: -0.025em;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+    margin-top: 8px;
   }
   .contact-lede {
     font-size: 15px;
     line-height: 1.65;
-    color: var(--ink-soft);
+    color: var(--text-soft);
     margin-bottom: 40px;
   }
   .contact-info {
@@ -133,6 +132,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .info-row {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     padding: 16px 0;
     border-bottom: 0.5px solid var(--rule);
     font-size: 14px;
@@ -146,17 +146,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     text-transform: uppercase;
     flex-shrink: 0;
   }
-  .info-row a {
-    color: var(--ink);
-    border-bottom: 0.5px solid var(--rule-strong);
+  .info-row a, .info-row span:not(.info-label) {
+    color: var(--text);
     text-align: right;
   }
-  .info-row a:hover { border-bottom-color: var(--accent); }
+  .info-row a {
+    border-bottom: 0.5px solid var(--rule-strong);
+  }
+  .info-row a:hover { border-bottom-color: var(--blue); color: var(--blue-deep); }
 
   .contact-form-box {
-    background: var(--paper-dark);
+    background: var(--bg-soft);
+    border: 0.5px solid var(--rule);
     padding: 32px;
-    border-radius: 0;
+    border-radius: 12px;
+  }
+  .form-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--blue-deep);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 24px;
   }
   .form-privacy {
     margin: 24px 0;
@@ -166,17 +178,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     gap: 10px;
     align-items: flex-start;
     font-size: 13px;
-    color: var(--ink-soft);
+    color: var(--text-soft);
     line-height: 1.5;
     cursor: pointer;
   }
   .checkbox input {
     margin-top: 3px;
-    accent-color: var(--accent);
+    accent-color: var(--blue);
   }
   .checkbox a {
-    color: var(--accent);
-    border-bottom: 0.5px solid var(--accent);
+    color: var(--blue-deep);
+    text-decoration: underline;
   }
   .form-submit {
     width: 100%;
@@ -198,9 +210,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  form?.addEventListener('submit', async (e) => {
+  form?.addEventListener('submit', (e) => {
     if (!form.action.includes('YOUR_FORM_ID')) return;
     e.preventDefault();
-    alert('Configura il tuo Form ID di Formspree (o un altro provider) nel campo action del form.');
+    alert('Configura il tuo Form ID di Formspree nel campo action del form.');
   });
 </script>

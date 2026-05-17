@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Note legali"
+  description="Note legali e informazioni societarie di RM-Solution di Regalia Marco."
+>
+  <section class="legal-page">
+    <div class="container">
+      <span class="section-num">— Documento legale</span>
+      <h1>Note legali</h1>
+      <p class="lede">
+        Informazioni legali e identificative ai sensi dell'art. 17 del D.Lgs. 206/2005 (Codice del Consumo)
+        e dell'art. 2250 del Codice Civile.
+      </p>
+
+      <div class="legal-content">
+
+        <h2>Titolare del sito</h2>
+        <div class="legal-block">
+          <div class="info-row">
+            <span class="info-label">Denominazione</span>
+            <span class="info-val">RM-Solution di Regalia Marco</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Forma giuridica</span>
+            <span class="info-val">Ditta individuale — Libero professionista</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Partita IVA</span>
+            <span class="info-val">IT 04098630124</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Regime fiscale</span>
+            <span class="info-val">Regime forfettario (L. 190/2014, art. 1 commi 54–89)</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Sede</span>
+            <span class="info-val">21013 Gallarate (VA), Italia</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Email</span>
+            <span class="info-val"><a href="mailto:info@rm-solution.it">info@rm-solution.it</a></span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Telefono</span>
+            <span class="info-val"><a href="tel:+393475400385">+39 347 540 0385</a></span>
+          </div>
+        </div>
+
+        <h2>Attività</h2>
+        <p>
+          RM-Solution di Regalia Marco svolge attività di consulenza informatica, direzione tecnica
+          IT (Fractional CTO), progettazione e gestione di infrastrutture, cloud computing,
+          cybersecurity e disaster recovery per piccole e medie imprese, startup e studi
+          professionali, prevalentemente in Italia.
+        </p>
+
+        <h2>Proprietà intellettuale</h2>
+        <p>
+          Tutti i contenuti presenti su questo sito (testi, immagini, grafica, codice sorgente
+          dove non diversamente specificato) sono di proprietà di RM-Solution di Regalia Marco
+          e sono protetti dalle leggi sul diritto d'autore.
+        </p>
+        <p>
+          È vietata la riproduzione, anche parziale, senza esplicita autorizzazione scritta.
+          I marchi e i nomi commerciali eventualmente citati appartengono ai rispettivi proprietari.
+        </p>
+
+        <h2>Limitazione di responsabilità</h2>
+        <p>
+          I contenuti del sito hanno finalità informativa. Le informazioni sono fornite "così
+          come sono" e RM-Solution non garantisce esattezza, completezza o aggiornamento dei
+          contenuti, né si assume responsabilità per eventuali errori, omissioni o per il loro uso.
+        </p>
+        <p>
+          Le offerte di servizio e i prezzi eventualmente indicati sul sito sono indicativi e
+          non costituiscono offerta contrattuale vincolante ai sensi dell'art. 1336 c.c.
+          La conclusione di qualsiasi rapporto contrattuale è formalizzata esclusivamente in
+          forma scritta tra le parti.
+        </p>
+
+        <h2>Foro competente</h2>
+        <p>
+          Per qualsiasi controversia derivante dall'uso del presente sito è competente in via
+          esclusiva il Foro di Busto Arsizio, fatta salva l'applicazione delle norme inderogabili
+          poste a tutela del consumatore.
+        </p>
+
+        <h2>Modifiche</h2>
+        <p>
+          RM-Solution si riserva il diritto di modificare in qualunque momento i contenuti
+          del sito e queste note legali, dandone comunicazione mediante pubblicazione sulla
+          presente pagina.
+        </p>
+
+        <p class="legal-note">
+          Ultimo aggiornamento: maggio 2026.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding-top: clamp(40px, 6vw, 72px);
+    padding-bottom: clamp(64px, 10vw, 112px);
+  }
+  .legal-page h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+    margin-top: 8px;
+  }
+  .lede {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-soft);
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+  .legal-content {
+    max-width: 720px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-soft);
+  }
+  .legal-content h2 {
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+  .legal-content h2:first-child { margin-top: 0; }
+  .legal-content p { margin-bottom: 16px; }
+  .legal-content a {
+    color: var(--blue-deep);
+    text-decoration: underline;
+  }
+  .legal-block {
+    background: var(--bg-soft);
+    border: 0.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .info-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--rule);
+    gap: 16px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+  .info-val {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .legal-note {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 0.5px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  @media (max-width: 560px) {
+    .info-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+  }
+</style>

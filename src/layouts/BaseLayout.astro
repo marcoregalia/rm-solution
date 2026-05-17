@@ -55,24 +55,65 @@ const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.site)} />
 
-    <!-- Schema.org Person -->
+    <!-- Schema.org Person + LocalBusiness -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Marco Regalia",
-      "jobTitle": "Senior System Administrator, Fractional CTO",
+      "@type": "ProfessionalService",
+      "name": "RM-Solution di Regalia Marco",
+      "alternateName": "RM-Solution",
       "url": "https://www.rm-solution.it",
-      "sameAs": ["https://www.linkedin.com/in/marcoregalia"],
+      "telephone": "+39 347 540 0385",
+      "email": "info@rm-solution.it",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Gallarate",
+        "addressRegion": "VA",
+        "postalCode": "21013",
+        "addressCountry": "IT"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Marco Regalia",
+        "jobTitle": "Senior System Administrator, Fractional CTO",
+        "sameAs": ["https://www.linkedin.com/in/marcoregalia"]
+      },
+      "vatID": "IT04098630124",
+      "areaServed": ["IT"],
       "knowsAbout": [
         "Cloud Computing", "Virtualization", "Cybersecurity",
-        "Disaster Recovery", "VMware", "Microsoft Azure", "WatchGuard"
-      ],
-      "worksFor": {
-        "@type": "Organization",
-        "name": "RM-Solution",
-        "url": "https://www.rm-solution.it"
-      }
+        "Disaster Recovery", "VMware", "Microsoft Azure", "WatchGuard",
+        "Fractional CTO", "IT Consulting"
+      ]
     })} />
+
+    <!-- Iubenda Cookie Solution -->
+    <script is:inline type="text/javascript">
+      var _iub = _iub || [];
+      _iub.csConfiguration = {
+        "askConsentAtCookiePolicyUpdate": true,
+        "emailMarketing": { "theme": "dark" },
+        "floatingPreferencesButtonDisplay": "bottom-left",
+        "perPurposeConsent": true,
+        "siteId": 4226928,
+        "storage": { "useSiteId": true },
+        "whitelabel": false,
+        "cookiePolicyId": 45743030,
+        "banner": {
+          "acceptButtonDisplay": true,
+          "closeButtonRejects": true,
+          "customizeButtonDisplay": true,
+          "explicitWithdrawal": true,
+          "listPurposes": true,
+          "position": "float-top-center",
+          "showTitle": false
+        }
+      };
+      _iub.csLangConfiguration = {
+        "it": { "cookiePolicyId": 45743030 }
+      };
+    </script>
+    <script is:inline type="text/javascript" src="https://cs.iubenda.com/autoblocking/4226928.js"></script>
+    <script is:inline type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
   </head>
   <body>
     <Header />

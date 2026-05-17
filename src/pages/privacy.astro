@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Privacy policy"
+  description="Informativa sulla privacy di RM-Solution di Regalia Marco, ai sensi del Regolamento UE 2016/679 (GDPR) e del D.Lgs. 196/2003."
+>
+  <section class="legal-page">
+    <div class="container">
+      <span class="section-num">— Documento legale</span>
+      <h1>Privacy policy</h1>
+      <p class="lede">
+        Informativa sul trattamento dei dati personali ai sensi del Regolamento UE 2016/679 (GDPR)
+        e del D.Lgs. 196/2003 e successive modificazioni.
+      </p>
+
+      <div class="legal-content">
+        <p class="legal-intro">
+          La presente informativa è gestita tramite Iubenda. Cliccando il pulsante qui sotto
+          puoi consultare la versione completa, sempre aggiornata e conforme alla normativa vigente.
+        </p>
+
+        <div class="legal-cta">
+          <a href="https://www.iubenda.com/privacy-policy/45743030"
+             class="iubenda-white iubenda-noiframe iubenda-embed btn btn-primary"
+             title="Privacy Policy completa"
+             target="_blank" rel="noopener">
+            Apri privacy policy completa →
+          </a>
+        </div>
+
+        <h2>Titolare del trattamento</h2>
+        <p>
+          Il titolare del trattamento dei dati è <strong>RM-Solution di Regalia Marco</strong>,
+          con sede in 21013 Gallarate (VA), P.IVA <strong>IT 04098630124</strong>.
+        </p>
+        <p>
+          Email di contatto: <a href="mailto:info@rm-solution.it">info@rm-solution.it</a><br />
+          Telefono: <a href="tel:+393475400385">+39 347 540 0385</a>
+        </p>
+
+        <h2>Tipologie di dati raccolti</h2>
+        <p>
+          Tra i dati personali raccolti da questo sito, in modo autonomo o tramite terze parti,
+          ci sono: dati di utilizzo, cookie, indirizzo email, nome, cognome, numero di telefono,
+          informazioni professionali, contenuto del messaggio inviato tramite il form di contatto.
+        </p>
+        <p>
+          Dettagli completi su ciascuna tipologia di dati raccolti sono forniti nella
+          privacy policy completa accessibile tramite il pulsante sopra.
+        </p>
+
+        <h2>I tuoi diritti</h2>
+        <p>
+          In qualità di interessato, hai diritto di accedere ai tuoi dati, rettificarli,
+          cancellarli, opporti al loro trattamento, richiederne la portabilità e revocare
+          il consenso, scrivendo a <a href="mailto:info@rm-solution.it">info@rm-solution.it</a>.
+        </p>
+        <p>
+          Hai inoltre diritto di proporre reclamo al Garante per la protezione dei dati personali
+          (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>).
+        </p>
+
+        <h2>Cookie</h2>
+        <p>
+          Per dettagli sui cookie utilizzati e sulle finalità, consulta la
+          <a href="/cookie/">cookie policy</a>.
+        </p>
+
+        <p class="legal-note">
+          Questa pagina riassuntiva non sostituisce la privacy policy completa.
+          Per esercitare i tuoi diritti o per dettagli completi, fai riferimento al documento integrale.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding-top: clamp(40px, 6vw, 72px);
+    padding-bottom: clamp(64px, 10vw, 112px);
+  }
+  .legal-page h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+    margin-top: 8px;
+  }
+  .lede {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-soft);
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+  .legal-content {
+    max-width: 720px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-soft);
+  }
+  .legal-intro {
+    background: var(--bg-soft);
+    padding: 20px;
+    border-left: 3px solid var(--blue);
+    border-radius: 6px;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+  .legal-cta {
+    margin-bottom: 48px;
+  }
+  .legal-content h2 {
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+  .legal-content p {
+    margin-bottom: 16px;
+  }
+  .legal-content a {
+    color: var(--blue-deep);
+    text-decoration: underline;
+  }
+  .legal-note {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 0.5px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+</style>

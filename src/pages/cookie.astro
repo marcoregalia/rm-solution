@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Cookie policy"
+  description="Informativa sui cookie di RM-Solution di Regalia Marco, ai sensi del Provvedimento del Garante per la protezione dei dati personali."
+>
+  <section class="legal-page">
+    <div class="container">
+      <span class="section-num">— Documento legale</span>
+      <h1>Cookie policy</h1>
+      <p class="lede">
+        Informativa sull'uso dei cookie ai sensi del Provvedimento del Garante
+        per la protezione dei dati personali e delle Linee Guida 10 giugno 2021.
+      </p>
+
+      <div class="legal-content">
+        <p class="legal-intro">
+          La presente informativa è gestita tramite Iubenda. Cliccando il pulsante qui sotto
+          puoi consultare la versione completa con l'elenco dettagliato di tutti i cookie utilizzati.
+        </p>
+
+        <div class="legal-cta">
+          <a href="https://www.iubenda.com/privacy-policy/45743030/cookie-policy"
+             class="iubenda-white iubenda-noiframe iubenda-embed btn btn-primary"
+             title="Cookie Policy completa"
+             target="_blank" rel="noopener">
+            Apri cookie policy completa →
+          </a>
+        </div>
+
+        <h2>Che cosa sono i cookie</h2>
+        <p>
+          I cookie sono piccoli file di testo che i siti visitati inviano al browser dell'utente,
+          dove vengono memorizzati per essere ritrasmessi agli stessi siti alla visita successiva.
+        </p>
+
+        <h2>Tipologie di cookie usati su questo sito</h2>
+        <p>
+          Questo sito utilizza cookie tecnici (necessari al funzionamento) e, previo consenso
+          esplicito, cookie analitici per misurare le visite in forma aggregata e anonima.
+        </p>
+        <p>
+          L'elenco completo, con finalità, durata e indicazione del titolare di ciascun cookie,
+          è disponibile nella cookie policy completa accessibile tramite il pulsante sopra.
+        </p>
+
+        <h2>Gestione del consenso</h2>
+        <p>
+          Al primo accesso al sito viene mostrato un banner che ti permette di accettare,
+          rifiutare o configurare in dettaglio l'uso dei cookie. La scelta viene memorizzata
+          e potrà essere modificata in qualunque momento.
+        </p>
+        <p>
+          Per modificare le tue preferenze cookie clicca qui:
+          <button
+            class="cookie-pref-btn"
+            onclick="if(typeof _iub !== 'undefined' && _iub.cs) _iub.cs.api.openPreferences();">
+            Apri preferenze cookie
+          </button>
+        </p>
+
+        <h2>Cookie di terze parti</h2>
+        <p>
+          Alcuni cookie possono essere installati da servizi di terze parti integrati nel sito
+          (per esempio Google Analytics, Iubenda, Formspree). Tali servizi sono soggetti alle
+          rispettive policy. L'elenco completo è nella cookie policy completa.
+        </p>
+
+        <h2>Come gestire i cookie dal browser</h2>
+        <p>
+          Oltre al banner di consenso, puoi gestire o disabilitare i cookie direttamente dalle
+          impostazioni del tuo browser. Ecco i link alle guide dei principali browser:
+        </p>
+        <ul>
+          <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+          <li><a href="https://support.mozilla.org/it/kb/Gestione%20dei%20cookie" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+          <li><a href="https://support.apple.com/it-it/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+          <li><a href="https://support.microsoft.com/it-it/microsoft-edge" target="_blank" rel="noopener">Microsoft Edge</a></li>
+        </ul>
+
+        <p class="legal-note">
+          Questa pagina riassuntiva non sostituisce la cookie policy completa.
+          Per l'elenco aggiornato di tutti i cookie e i loro titolari fai riferimento al documento integrale.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding-top: clamp(40px, 6vw, 72px);
+    padding-bottom: clamp(64px, 10vw, 112px);
+  }
+  .legal-page h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+    margin-top: 8px;
+  }
+  .lede {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-soft);
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+  .legal-content {
+    max-width: 720px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-soft);
+  }
+  .legal-intro {
+    background: var(--bg-soft);
+    padding: 20px;
+    border-left: 3px solid var(--blue);
+    border-radius: 6px;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+  .legal-cta {
+    margin-bottom: 48px;
+  }
+  .legal-content h2 {
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+  .legal-content p { margin-bottom: 16px; }
+  .legal-content ul {
+    margin-bottom: 16px;
+    padding-left: 24px;
+  }
+  .legal-content li { margin-bottom: 6px; }
+  .legal-content a {
+    color: var(--blue-deep);
+    text-decoration: underline;
+  }
+  .cookie-pref-btn {
+    background: var(--blue-bg);
+    color: var(--blue-deep);
+    border: 0.5px solid var(--blue-border);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    margin-left: 4px;
+  }
+  .cookie-pref-btn:hover {
+    background: var(--blue);
+    color: #fff;
+  }
+  .legal-note {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 0.5px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+</style>
