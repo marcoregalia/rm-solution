@@ -55,7 +55,7 @@ const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.site)} />
 
-    <!-- Schema.org Person + LocalBusiness -->
+    <!-- Schema.org ProfessionalService -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
@@ -86,7 +86,7 @@ const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
       ]
     })} />
 
-    <!-- Iubenda Cookie Solution -->
+    <!-- Iubenda Cookie Solution con Autoblocking -->
     <script is:inline type="text/javascript">
       var _iub = _iub || [];
       _iub.csConfiguration = {
@@ -114,6 +114,16 @@ const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
     </script>
     <script is:inline type="text/javascript" src="https://cs.iubenda.com/autoblocking/4226928.js"></script>
     <script is:inline type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+
+    <!-- Google Analytics 4 - bloccato finché Iubenda non rileva il consenso -->
+    <!-- L'autoblocking di Iubenda intercetta questo script e lo carica solo dopo il consenso utente -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-P6X8826TVQ"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6X8826TVQ', { 'anonymize_ip': true });
+    </script>
   </head>
   <body>
     <Header />
