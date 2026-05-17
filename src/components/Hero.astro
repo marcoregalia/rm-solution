@@ -1,0 +1,115 @@
+---
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-loc">
+      <span class="loc-dot"></span>
+      Disponibile per nuovi progetti · Q4 2026
+    </div>
+
+    <div class="hero-tag">
+      <span class="hero-tag-num">01</span>
+      <span class="hero-tag-line"></span>
+      <span class="hero-tag-text">Fractional CTO &nbsp;·&nbsp; Senior IT Advisor</span>
+    </div>
+
+    <h1>
+      Una direzione tecnica <i>seria,</i> senza i costi di un dirigente a tempo pieno.<sup>¹</sup>
+    </h1>
+
+    <p class="hero-sub">
+      Quindici anni di pratica — non di teoria — in infrastrutture, cloud ibrido e cybersecurity.
+      Lavoro al fianco di imprenditori e dirigenti che vogliono smettere di improvvisare sull'IT,
+      mantenendo il controllo e senza moltiplicare i fornitori.
+    </p>
+
+    <div class="hero-cta">
+      <a href="/contatti/" class="btn btn-primary">Prenota una conversazione</a>
+      <a href="/chi-sono/" class="btn-link">Leggi il metodo →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: clamp(48px, 10vw, 96px);
+    padding-bottom: clamp(48px, 10vw, 96px);
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .hero-loc {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .loc-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #0fa86e;
+  }
+  .hero-tag {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .hero-tag-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .hero-tag-line {
+    flex: 0 0 60px;
+    height: 0.5px;
+    background: var(--rule);
+  }
+  .hero-tag-text {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 6.5vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+  .hero h1 sup {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--muted);
+    vertical-align: super;
+    margin-left: 4px;
+  }
+  .hero-sub {
+    font-size: clamp(15px, 1.6vw, 17px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+  .hero-cta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 480px) {
+    .hero-cta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .btn-primary { width: 100%; }
+  }
+</style>

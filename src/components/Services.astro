@@ -1,0 +1,105 @@
+---
+export interface Props {
+  showAll?: boolean;
+}
+
+const { showAll = false } = Astro.props;
+
+const services = [
+  {
+    n: '— I',
+    title: 'Direzione tecnica frazionale',
+    desc: 'Da una a tre giornate al mese di presenza strategica: roadmap tecnologica, vendor management, budgeting IT, decisioni architetturali.',
+  },
+  {
+    n: '— II',
+    title: 'Cloud ibrido e virtualizzazione',
+    desc: 'Progettazione e migrazione su VMware, Proxmox, Microsoft Azure. Architetture ad alta disponibilità con costi prevedibili.',
+  },
+  {
+    n: '— III',
+    title: 'Sicurezza perimetrale e governance',
+    desc: 'WatchGuard, Fortinet, pfSense. Segmentazione di rete, MFA, gestione centralizzata degli endpoint, policy documentate.',
+  },
+  {
+    n: '— IV',
+    title: 'Backup e disaster recovery',
+    desc: 'Strategia 3-2-1 con immutabilità su Wasabi S3. Test di ripristino trimestrali, documentati, verificabili.',
+  },
+  {
+    n: '— V',
+    title: 'Email, Microsoft 365 e ambienti ibridi',
+    desc: 'Migrazioni Exchange, antispam Libraesva certificato, configurazioni ibride senza interruzioni operative.',
+  },
+];
+---
+
+<section class="section" id="servizi">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">03 / SERVIZI</span>
+      <h2>Cinque aree, <i>un solo</i> punto di contatto.</h2>
+      <p class="section-lede">
+        Ogni servizio è progettato per produrre risultati misurabili, documentati e ripetibili.
+        Niente promesse vaghe, niente report di facciata.
+      </p>
+    </div>
+    <div class="section-body">
+      <div></div>
+      <div class="section-content">
+        <div class="services-list">
+          {services.map((s) => (
+            <article class="service-row">
+              <div class="service-num">{s.n}</div>
+              <div>
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-list {
+    border-top: 0.5px solid var(--rule);
+  }
+  .service-row {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+    padding: 28px 0;
+    border-bottom: 0.5px solid var(--rule);
+    align-items: start;
+  }
+  .service-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    padding-top: 6px;
+  }
+  .service-row h3 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    line-height: 1.25;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .service-row p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 520px;
+  }
+  @media (max-width: 600px) {
+    .service-row {
+      grid-template-columns: 40px 1fr;
+      gap: 12px;
+    }
+  }
+</style>

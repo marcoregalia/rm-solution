@@ -1,0 +1,110 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">RM<i>—</i>Solution</div>
+        <p class="footer-tag">Direzione tecnica IT per PMI, startup e studi professionali.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Navigazione</div>
+        <ul>
+          <li><a href="/servizi/">Servizi</a></li>
+          <li><a href="/chi-sono/">Chi sono</a></li>
+          <li><a href="/casi-studio/">Casi studio</a></li>
+          <li><a href="/contatti/">Contatti</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contatti</div>
+        <ul>
+          <li><a href="mailto:marco@rm-solution.it">marco@rm-solution.it</a></li>
+          <li>Varese / Milano</li>
+          <li><a href="https://www.linkedin.com/in/marcoregalia" rel="noopener" target="_blank">LinkedIn ↗</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Legale</div>
+        <ul>
+          <li><a href="/privacy/">Privacy policy</a></li>
+          <li><a href="/cookie/">Cookie policy</a></li>
+          <li>P.IVA da inserire</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <span>© {year} RM-Solution · Marco Regalia</span>
+      <span class="mono">v1.0 — sito statico, costruito con Astro</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 64px 0 32px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .footer-logo {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .footer-logo i { font-style: italic; color: var(--accent-light); }
+  .footer-tag {
+    font-size: 13px;
+    color: #bcb6ab;
+    line-height: 1.6;
+    max-width: 300px;
+  }
+  .footer-col-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7a766f;
+    margin-bottom: 16px;
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .footer-col a, .footer-col li {
+    font-size: 13px;
+    color: var(--paper);
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--accent-light); }
+  .footer-meta {
+    border-top: 0.5px solid #2a2925;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #7a766f;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-meta .mono {
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+  }
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 24px;
+    }
+    .footer-brand { grid-column: span 2; }
+  }
+</style>

@@ -1,0 +1,123 @@
+---
+import { getCollection } from 'astro:content';
+
+const cases = await getCollection('casi-studio', ({ data }) => !data.draft);
+const sorted = cases.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()).slice(0, 3);
+
+const fallback = [
+  {
+    settore: 'Studio legale',
+    dimensione: '25 utenti',
+    risultato: '— zero downtime',
+    title: 'Migrazione Exchange on-premise verso Microsoft 365 senza interruzioni operative',
+    desc: 'Ambiente ibrido pianificato in tre fasi nell\'arco di sei settimane. Implementazione contestuale di MFA, antispam Libraesva e policy DLP. Nessuna mailbox persa, nessun appuntamento mancato.',
+  },
+  {
+    settore: 'PMI manifatturiera',
+    dimensione: '80 utenti',
+    risultato: '— RTO sotto le 4 ore',
+    title: 'Disaster recovery su Wasabi S3 con backup immutabili, sostituendo il sistema a nastro',
+    desc: 'Strategia 3-2-1 progettata da zero, replica offsite verso Wasabi con immutabilità a 30 giorni. Test di ripristino trimestrali documentati. Eliminazione completa dell\'infrastruttura tape.',
+  },
+  {
+    settore: 'Startup SaaS',
+    dimensione: '15 dipendenti',
+    risultato: '— 6 mesi, ruolo Fractional CTO',
+    title: 'Architettura cloud da zero, dalla scelta dei vendor alla messa in produzione',
+    desc: 'Definizione dello stack su Microsoft Azure, selezione dei fornitori, implementazione di un CI/CD essenziale e di policy di sicurezza minime ma reali. Affiancamento e formazione del team tecnico interno.',
+  },
+];
+
+const display = sorted.length > 0
+  ? sorted.map(c => ({
+      settore: c.data.settore,
+      dimensione: c.data.dimensione,
+      risultato: c.data.risultato,
+      title: c.data.title,
+      desc: c.body.slice(0, 240),
+    }))
+  : fallback;
+---
+
+<section class="section" id="casi">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">05 / CASI</span>
+      <h2>Tre interventi recenti, <i>raccontati senza filtro.</i></h2>
+      <p class="section-lede">
+        I clienti restano anonimi per riservatezza.
+        I numeri, le scelte tecniche e le difficoltà incontrate sono reali.
+      </p>
+    </div>
+    <div class="section-body">
+      <div></div>
+      <div class="section-content">
+        <div class="cases-list">
+          {display.map((c) => (
+            <article class="case">
+              <div class="case-meta">
+                <span class="case-sector">{c.settore} · {c.dimensione}</span>
+                <span class="case-result">{c.risultato}</span>
+              </div>
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+            </article>
+          ))}
+        </div>
+        <div class="cases-foot">
+          <a href="/casi-studio/" class="btn-link">Tutti i casi studio →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cases-list {
+    border-top: 0.5px solid var(--rule);
+  }
+  .case {
+    padding: 32px 0;
+    border-bottom: 0.5px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .case-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .case-sector {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .case-result {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--accent);
+  }
+  .case h3 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    line-height: 1.25;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    max-width: 560px;
+  }
+  .case p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 560px;
+  }
+  .cases-foot {
+    margin-top: 32px;
+  }
+</style>

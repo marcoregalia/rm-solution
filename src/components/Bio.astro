@@ -1,0 +1,115 @@
+---
+const certifications = [
+  { name: 'VMware VCP', meta: 'Foundation 6.7' },
+  { name: 'WatchGuard', meta: 'Base + Advanced' },
+  { name: 'MikroTik', meta: 'MTCNA' },
+  { name: 'Proxmox', meta: 'Certified' },
+  { name: 'Wasabi S3', meta: 'Certified Partner' },
+  { name: 'Libraesva ESG', meta: 'Certified' },
+  { name: 'Syneto', meta: 'Certified' },
+  { name: 'Microsoft Azure', meta: 'AZ-900 — in corso' },
+  { name: 'Parallels RAS', meta: 'In corso' },
+];
+---
+
+<section class="section" id="chi-sono">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">04 / PROFILO</span>
+      <h2>Quando mi contatti, parli <i>con me.</i></h2>
+    </div>
+    <div class="section-body">
+      <div></div>
+      <div class="section-content">
+        <div class="bio-name">Marco Regalia</div>
+        <div class="bio-role">15 anni — sempre sul campo</div>
+
+        <p class="bio-text">
+          Ho iniziato a lavorare nell'IT nei primi anni 2010, gestendo infrastrutture
+          per piccole realtà manifatturiere della provincia di Varese. Da lì non mi sono
+          più fermato: data center, virtualizzazione, sicurezza perimetrale, cloud ibrido.
+        </p>
+        <p class="bio-text">
+          RM-Solution è la formalizzazione di questo percorso. Non ho un team commerciale,
+          non ho un call center, non ho intermediari. Quando mi contatti, rispondo io —
+          e se prendo un impegno, lo porto a termine io.
+        </p>
+
+        <div class="cert-label">— Certificazioni attive</div>
+        <div class="cert-grid">
+          {certifications.map((c) => (
+            <div class="cert">
+              <div class="cert-name">{c.name}</div>
+              <div class="cert-meta">{c.meta}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bio-name {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 400;
+    margin-bottom: 4px;
+    letter-spacing: -0.015em;
+  }
+  .bio-role {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .bio-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin-bottom: 18px;
+  }
+  .cert-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 0.5px solid var(--rule);
+  }
+  .cert {
+    padding: 16px 12px 16px 0;
+    border-bottom: 0.5px solid var(--rule);
+    border-right: 0.5px solid var(--rule);
+  }
+  .cert:nth-child(3n) { border-right: none; }
+  .cert:nth-child(3n-1) { padding-left: 12px; }
+  .cert:nth-child(3n) { padding-left: 12px; }
+  .cert-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .cert-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  @media (max-width: 600px) {
+    .cert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cert:nth-child(3n) { border-right: 0.5px solid var(--rule); padding-left: 0; }
+    .cert:nth-child(2n) { border-right: none; padding-left: 12px; }
+    .cert:nth-child(2n-1) { padding-left: 0; }
+  }
+</style>

@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import ContactCTA from '../../components/ContactCTA.astro';
+
+const cases = await getCollection('casi-studio', ({ data }) => !data.draft);
+const sorted = cases.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<BaseLayout
+  title="Casi studio"
+  description="Progetti IT realizzati da Marco Regalia per PMI, startup e studi professionali. Migrazioni cloud, disaster recovery, sicurezza, Fractional CTO."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-num">— CASI STUDIO</span>
+      <h1>Interventi reali, <i>raccontati senza filtro.</i></h1>
+      <p class="page-lede">
+        I clienti restano anonimi per riservatezza. I numeri, le scelte tecniche
+        e le difficoltà incontrate sono reali.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cases-list">
+        {sorted.length === 0 ? (
+          <p class="empty">I primi casi studio saranno pubblicati a breve.</p>
+        ) : (
+          sorted.map((c) => (
+            <article class="case">
+              <a href={`/casi-studio/${c.slug}/`} class="case-link">
+                <div class="case-meta">
+                  <span class="case-sector">{c.data.settore} · {c.data.dimensione}</span>
+                  <span class="case-result">{c.data.risultato}</span>
+                </div>
+                <h2>{c.data.title}</h2>
+                {c.data.durata && <span class="case-duration">{c.data.durata}</span>}
+              </a>
+            </article>
+          ))
+        )}
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-top: clamp(48px, 8vw, 96px);
+    padding-bottom: clamp(48px, 8vw, 96px);
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .page-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 24px;
+  }
+  .page-hero h1 {
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+  .page-lede {
+    font-size: clamp(15px, 1.6vw, 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 600px;
+  }
+  .cases-list {
+    border-top: 0.5px solid var(--rule);
+  }
+  .case {
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .case-link {
+    display: block;
+    padding: 32px 0;
+    transition: padding-left 0.2s;
+  }
+  .case-link:hover {
+    padding-left: 12px;
+  }
+  .case-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .case-sector {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .case-result {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--accent);
+  }
+  .case h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    max-width: 720px;
+  }
+  .case-duration {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .empty {
+    padding: 48px 0;
+    text-align: center;
+    color: var(--muted);
+    font-style: italic;
+  }
+</style>

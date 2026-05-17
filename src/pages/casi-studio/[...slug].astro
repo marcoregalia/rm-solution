@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('casi-studio', ({ data }) => !data.draft);
+  return cases.map((c) => ({
+    params: { slug: c.slug },
+    props: { entry: c },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={`${entry.data.settore} · ${entry.data.dimensione} — ${entry.data.title}`}
+>
+  <article class="case-page">
+    <div class="container">
+      <div class="back">
+        <a href="/casi-studio/" class="btn-link">← Tutti i casi studio</a>
+      </div>
+
+      <div class="case-meta-top">
+        <span class="case-sector">{entry.data.settore} · {entry.data.dimensione}</span>
+        <span class="case-result">{entry.data.risultato}</span>
+      </div>
+
+      <h1>{entry.data.title}</h1>
+
+      {entry.data.durata && (
+        <div class="case-duration">{entry.data.durata}</div>
+      )}
+
+      <div class="case-body">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <ContactCTA />
+</BaseLayout>
+
+<style>
+  .case-page {
+    padding-top: clamp(40px, 6vw, 72px);
+    padding-bottom: clamp(64px, 10vw, 112px);
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .back {
+    margin-bottom: 32px;
+  }
+  .case-meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 0.5px solid var(--rule);
+    flex-wrap: wrap;
+  }
+  .case-sector {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .case-result {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--accent);
+  }
+  .case-page h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    max-width: 800px;
+  }
+  .case-duration {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .case-body {
+    max-width: 680px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .case-body :global(h2) {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .case-body :global(h3) {
+    font-size: 20px;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .case-body :global(p) {
+    margin-bottom: 20px;
+  }
+  .case-body :global(ul), .case-body :global(ol) {
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+  .case-body :global(li) { margin-bottom: 6px; }
+  .case-body :global(blockquote) {
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    margin: 32px 0;
+    color: var(--ink);
+  }
+  .case-body :global(code) {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    background: var(--paper-dark);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+</style>

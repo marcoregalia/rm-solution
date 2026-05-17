@@ -1,0 +1,93 @@
+---
+const targets = [
+  {
+    title: 'PMI manifatturiere e di servizi',
+    desc: '20–150 dipendenti, area Varese e Milano. Un\'infrastruttura solida, gestita da una sola persona di riferimento, senza un IT manager interno.',
+    tag: 'Continuativa',
+  },
+  {
+    title: 'Startup in fase di scale-up',
+    desc: 'Le decisioni tecniche delle prime fasi pesano per anni. Ti aiuto a prenderle bene — senza dover assumere un CTO a tempo pieno troppo presto.',
+    tag: 'Fractional',
+  },
+  {
+    title: 'Studi professionali',
+    desc: 'Commercialisti, avvocati, notai. Riservatezza, GDPR e continuità operativa non sono compromessi negoziabili.',
+    tag: 'Compliance',
+  },
+  {
+    title: 'Aziende medie',
+    desc: 'Affianco team IT esistenti su progetti complessi: virtualizzazione, disaster recovery, migrazioni cloud, audit di sicurezza.',
+    tag: 'Consulenza',
+  },
+];
+---
+
+<section class="section" id="target">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">02 / TARGET</span>
+      <h2>Lavoro con quattro tipi di organizzazione, <i>una alla volta.</i></h2>
+    </div>
+    <div class="section-body">
+      <div></div>
+      <div class="section-content">
+        <div class="target-list">
+          {targets.map((t) => (
+            <div class="target-row">
+              <div class="target-text">
+                <h3>{t.title}</h3>
+                <p>{t.desc}</p>
+              </div>
+              <span class="target-tag">{t.tag}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .target-list {
+    border-top: 0.5px solid var(--rule);
+  }
+  .target-row {
+    display: grid;
+    grid-template-columns: 1fr 110px;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 0.5px solid var(--rule);
+    align-items: start;
+  }
+  .target-row h3 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 400;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .target-row p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    max-width: 540px;
+  }
+  .target-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    text-transform: uppercase;
+    text-align: right;
+    padding-top: 10px;
+  }
+  @media (max-width: 600px) {
+    .target-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .target-tag { text-align: left; padding-top: 0; }
+  }
+</style>

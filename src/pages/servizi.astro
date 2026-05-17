@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Services from '../components/Services.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+
+<BaseLayout
+  title="Servizi"
+  description="Direzione tecnica frazionale, cloud ibrido, sicurezza perimetrale, backup e disaster recovery, Microsoft 365 — i servizi IT di Marco Regalia per aziende e studi professionali."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-num">— SERVIZI</span>
+      <h1>Cinque aree, <i>un solo</i> punto di contatto.</h1>
+      <p class="page-lede">
+        Ogni servizio è progettato per produrre risultati misurabili, documentati e ripetibili.
+        Niente promesse vaghe, niente report di facciata. La consulenza si paga, ma quello che serve
+        davvero — la decisione presa bene la prima volta — non ha prezzo.
+      </p>
+    </div>
+  </section>
+
+  <Services showAll={true} />
+  <ContactCTA />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-top: clamp(48px, 8vw, 96px);
+    padding-bottom: clamp(48px, 8vw, 96px);
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .page-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 24px;
+  }
+  .page-hero h1 {
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+  .page-lede {
+    font-size: clamp(15px, 1.6vw, 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 600px;
+  }
+</style>

@@ -1,0 +1,124 @@
+---
+const { pathname } = Astro.url;
+const isActive = (path: string) => pathname === path || pathname.startsWith(path + '/');
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="RM-Solution — Home">
+      RM<i>—</i>Solution
+    </a>
+    <nav class="nav-desktop" aria-label="Navigazione principale">
+      <a href="/servizi/" class:list={[{ active: isActive('/servizi') }]}>Servizi</a>
+      <a href="/chi-sono/" class:list={[{ active: isActive('/chi-sono') }]}>Chi sono</a>
+      <a href="/casi-studio/" class:list={[{ active: isActive('/casi-studio') }]}>Casi studio</a>
+      <a href="/contatti/" class:list={[{ active: isActive('/contatti') }]}>Contatti</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav id="nav-mobile" class="nav-mobile" aria-label="Navigazione mobile">
+    <a href="/servizi/">Servizi</a>
+    <a href="/chi-sono/">Chi sono</a>
+    <a href="/casi-studio/">Casi studio</a>
+    <a href="/contatti/">Contatti</a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    border-bottom: 0.5px solid var(--rule);
+    z-index: 100;
+    backdrop-filter: blur(8px);
+    background: rgba(245, 242, 236, 0.92);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .logo {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .logo i { font-style: italic; color: var(--accent); font-weight: 400; }
+
+  .nav-desktop {
+    display: flex;
+    gap: 32px;
+  }
+  .nav-desktop a {
+    font-size: 13px;
+    color: var(--ink-soft);
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-desktop a:hover, .nav-desktop a.active { color: var(--ink); }
+  .nav-desktop a.active::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -6px;
+    height: 0.5px;
+    background: var(--accent);
+  }
+
+  .nav-toggle {
+    display: none;
+    width: 40px; height: 40px;
+    border: 0.5px solid var(--rule);
+    border-radius: 50%;
+    background: transparent;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 16px; height: 1px;
+    background: var(--ink);
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+
+  .nav-mobile {
+    display: none;
+    flex-direction: column;
+    padding: 8px var(--container-padding) 24px;
+    border-top: 0.5px solid var(--rule);
+  }
+  .nav-mobile a {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    color: var(--ink);
+    padding: 12px 0;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .nav-mobile.open { display: flex; }
+
+  @media (max-width: 768px) {
+    .nav-desktop { display: none; }
+    .nav-toggle { display: flex; }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('nav-mobile');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Chiudi menu' : 'Apri menu');
+  });
+</script>

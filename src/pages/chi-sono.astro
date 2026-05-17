@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Bio from '../components/Bio.astro';
+import Approach from '../components/Approach.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+
+<BaseLayout
+  title="Chi sono"
+  description="Marco Regalia, Senior System Administrator e Cloud Architect. Quindici anni di esperienza sul campo in infrastrutture IT, virtualizzazione, sicurezza e disaster recovery."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-num">— CHI SONO</span>
+      <h1>Quando mi contatti, parli <i>con me.</i></h1>
+      <p class="page-lede">
+        RM-Solution è la formalizzazione di un percorso professionale iniziato quindici anni fa.
+        Non c'è una struttura aziendale dietro le quinte: c'è un professionista che risponde,
+        progetta e implementa direttamente.
+      </p>
+    </div>
+  </section>
+
+  <Approach />
+  <Bio />
+  <ContactCTA />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-top: clamp(48px, 8vw, 96px);
+    padding-bottom: clamp(48px, 8vw, 96px);
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .page-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 24px;
+  }
+  .page-hero h1 {
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+  .page-lede {
+    font-size: clamp(15px, 1.6vw, 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 600px;
+  }
+</style>

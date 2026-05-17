@@ -1,0 +1,57 @@
+---
+---
+
+<section class="approach">
+  <div class="container">
+    <div class="approach-num">— METODO</div>
+    <blockquote class="approach-quote">
+      L'IT non è un reparto da appaltare al miglior offerente.
+      È un asset da progettare, e poi da custodire con attenzione.
+    </blockquote>
+    <cite class="approach-attr">Marco Regalia · Senior System Administrator</cite>
+  </div>
+</section>
+
+<style>
+  .approach {
+    background: var(--paper-dark);
+    padding: clamp(64px, 10vw, 112px) 0;
+    border-top: 0.5px solid var(--rule);
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .approach-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+  }
+  .approach-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(24px, 4vw, 38px);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    max-width: 680px;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+  .approach-quote::before {
+    content: "\201C";
+    font-style: normal;
+    color: var(--accent);
+    font-size: 1.4em;
+    line-height: 0;
+    vertical-align: -0.25em;
+    margin-right: 0.1em;
+  }
+  .approach-attr {
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+</style>
