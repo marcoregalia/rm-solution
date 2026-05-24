@@ -1,0 +1,14 @@
+name = "rm-solution"
+main = "src/index.ts"
+compatibility_date = "2024-11-06"
+compatibility_flags = ["nodejs_compat"]
+
+# Static Assets — serve i file generati da Astro
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+# Observability — abilita i log delle Worker
+[observability]
+enabled = true

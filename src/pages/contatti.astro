@@ -233,7 +233,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     text-decoration: underline;
   }
 
-  /* Honeypot — visibilmente nascosto ma raggiungibile da bot */
   .form-honeypot {
     position: absolute;
     left: -9999px;
@@ -251,15 +250,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </style>
 
 <script>
-  // Progressive enhancement: gestione invio via fetch per UX migliore.
-  // Se JS è disabilitato, il form funziona comunque via POST nativo.
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const submitBtn = document.getElementById('form-submit-btn') as HTMLButtonElement | null;
   const errorBox = document.getElementById('form-error') as HTMLDivElement | null;
 
   if (form && submitBtn && errorBox) {
     form.addEventListener('submit', async (e) => {
-      // Lascia che il browser faccia validazione HTML5 nativa
       if (!form.checkValidity()) return;
 
       e.preventDefault();
@@ -285,7 +281,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           return;
         }
 
-        // Errore lato server
         errorBox.hidden = false;
         submitBtn.disabled = false;
         submitBtn.textContent = 'Riprova invio';
