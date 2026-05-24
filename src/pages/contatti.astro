@@ -46,28 +46,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="form-eyebrow">— Form di contatto</div>
         <form
           class="contact-form"
-          action="https://formspree.io/f/YOUR_FORM_ID"
+          action="/api/contact"
           method="POST"
           id="contact-form"
         >
           <div class="form-field">
             <label class="form-label" for="name">Nome e cognome</label>
-            <input class="form-input" type="text" id="name" name="name" required autocomplete="name" />
+            <input class="form-input" type="text" id="name" name="name" required autocomplete="name" minlength="2" maxlength="100" />
           </div>
 
           <div class="form-field">
             <label class="form-label" for="company">Azienda / Studio</label>
-            <input class="form-input" type="text" id="company" name="company" autocomplete="organization" />
+            <input class="form-input" type="text" id="company" name="company" autocomplete="organization" maxlength="200" />
           </div>
 
           <div class="form-field">
             <label class="form-label" for="email">Email</label>
-            <input class="form-input" type="email" id="email" name="email" required autocomplete="email" />
+            <input class="form-input" type="email" id="email" name="email" required autocomplete="email" maxlength="254" />
           </div>
 
           <div class="form-field">
             <label class="form-label" for="role">Ruolo</label>
-            <input class="form-input" type="text" id="role" name="role" placeholder="Titolare, IT manager, fondatore..." />
+            <input class="form-input" type="text" id="role" name="role" placeholder="Titolare, IT manager, fondatore..." maxlength="100" />
           </div>
 
           <div class="form-field">
@@ -77,13 +77,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               id="message"
               name="message"
               required
+              minlength="10"
+              maxlength="5000"
               placeholder="Una breve descrizione della situazione: cosa cerchi, cosa non funziona oggi, cosa vorresti ottenere."
             ></textarea>
           </div>
 
+          <!-- Honeypot anti-bot: NON modificare, NON mostrare -->
+          <div class="form-honeypot" aria-hidden="true">
+            <label for="website">Lascia vuoto</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
           <div class="form-privacy">
             <label class="checkbox">
-              <input type="checkbox" required />
+              <input type="checkbox" required name="privacy" />
               <span>
                 Ho letto la <a href="/privacy/">privacy policy</a> e acconsento al
                 trattamento dei dati per essere ricontattato.
@@ -91,12 +99,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </label>
           </div>
 
-          <button type="submit" class="btn btn-primary form-submit">Invia richiesta</button>
+          <button type="submit" class="btn btn-primary form-submit" id="form-submit-btn">
+            Invia richiesta
+          </button>
 
           <p class="form-note">
             Ti risponderò entro un giorno lavorativo. Se l'argomento non rientra
             nelle mie competenze, te lo dirò subito senza farti perdere tempo.
           </p>
+
+          <div class="form-error" id="form-error" hidden>
+            Si è verificato un errore nell'invio. Puoi scrivermi direttamente a
+            <a href="mailto:info@rm-solution.it">info@rm-solution.it</a>.
+          </div>
         </form>
       </div>
     </div>
@@ -193,11 +208,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .form-submit {
     width: 100%;
   }
+  .form-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
   .form-note {
     font-size: 12px;
     color: var(--muted);
     margin-top: 16px;
     line-height: 1.55;
+  }
+  .form-error {
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: #fdf0f0;
+    border: 1px solid #f5c2c2;
+    border-radius: 6px;
+    color: #a02020;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .form-error a {
+    color: #a02020;
+    text-decoration: underline;
+  }
+
+  /* Honeypot — visibilmente nascosto ma raggiungibile da bot */
+  .form-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 
   @media (max-width: 900px) {
@@ -209,10 +251,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </style>
 
 <script>
+  // Progressive enhancement: gestione invio via fetch per UX migliore.
+  // Se JS è disabilitato, il form funziona comunque via POST nativo.
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  form?.addEventListener('submit', (e) => {
-    if (!form.action.includes('YOUR_FORM_ID')) return;
-    e.preventDefault();
-    alert('Configura il tuo Form ID di Formspree nel campo action del form.');
-  });
+  const submitBtn = document.getElementById('form-submit-btn') as HTMLButtonElement | null;
+  const errorBox = document.getElementById('form-error') as HTMLDivElement | null;
+
+  if (form && submitBtn && errorBox) {
+    form.addEventListener('submit', async (e) => {
+      // Lascia che il browser faccia validazione HTML5 nativa
+      if (!form.checkValidity()) return;
+
+      e.preventDefault();
+      errorBox.hidden = true;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Invio in corso...';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          body: formData,
+          redirect: 'follow',
+        });
+
+        if (response.redirected) {
+          window.location.href = response.url;
+          return;
+        }
+
+        if (response.ok) {
+          window.location.href = '/contatti/grazie/';
+          return;
+        }
+
+        // Errore lato server
+        errorBox.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Riprova invio';
+      } catch (err) {
+        errorBox.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Riprova invio';
+      }
+    });
+  }
 </script>

@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Richiesta ricevuta — Grazie"
+  description="La tua richiesta è stata ricevuta. Marco Regalia ti risponderà entro un giorno lavorativo."
+>
+  <section class="thanks-page">
+    <div class="container">
+      <div class="thanks-content">
+        <div class="thanks-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+
+        <span class="section-num">— Richiesta ricevuta</span>
+        <h1>Grazie, <span class="accent">a presto.</span></h1>
+        <p class="thanks-lede">
+          Ho ricevuto la tua richiesta. Ti rispondo entro un giorno lavorativo
+          all'indirizzo email che mi hai indicato.
+        </p>
+
+        <div class="thanks-info">
+          <div class="info-row">
+            <span class="info-label">Cosa succede ora</span>
+            <span class="info-val">Leggo la tua richiesta personalmente</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Quando ti rispondo</span>
+            <span class="info-val">Entro un giorno lavorativo</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Se è urgente</span>
+            <span class="info-val">
+              <a href="tel:+393475400385">+39 347 540 0385</a>
+            </span>
+          </div>
+        </div>
+
+        <div class="thanks-actions">
+          <a href="/" class="btn btn-primary">Torna alla homepage</a>
+          <a href="/casi-studio/" class="btn-link">
+            Leggi i casi studio nel frattempo →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thanks-page {
+    padding-top: clamp(64px, 10vw, 120px);
+    padding-bottom: clamp(64px, 10vw, 120px);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+  .thanks-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .thanks-icon {
+    color: var(--blue);
+    margin: 0 auto 32px;
+    width: 80px;
+    height: 80px;
+    background: var(--blue-bg);
+    border: 0.5px solid var(--blue-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .thanks-content h1 {
+    font-size: clamp(36px, 5.5vw, 56px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    margin-bottom: 20px;
+    margin-top: 12px;
+  }
+  .thanks-lede {
+    font-size: clamp(15px, 1.5vw, 17px);
+    line-height: 1.6;
+    color: var(--text-soft);
+    margin-bottom: 48px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .thanks-info {
+    margin-bottom: 48px;
+    border-top: 0.5px solid var(--rule);
+    text-align: left;
+  }
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 0.5px solid var(--rule);
+    gap: 16px;
+  }
+  .info-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .info-val {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .info-val a {
+    color: var(--blue-deep);
+    border-bottom: 0.5px solid var(--rule-strong);
+  }
+  .thanks-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .info-row {
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+</style>
