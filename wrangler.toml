@@ -12,3 +12,10 @@ not_found_handling = "single-page-application"
 # Observability — abilita i log delle Worker
 [observability]
 enabled = true
+
+# Environment variables (plaintext, sicure da committare)
+# NOTA: RESEND_API_KEY è gestita come Secret dalla dashboard Cloudflare,
+# NON va inserita qui per non finire su Git.
+[vars]
+CONTACT_TO_EMAIL = "info@rm-solution.it"
+CONTACT_FROM_EMAIL = "noreply@send.rm-solution.it"
