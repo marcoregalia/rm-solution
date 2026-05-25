@@ -18,4 +18,4 @@ enabled = true
 # NON va inserita qui per non finire su Git.
 [vars]
 CONTACT_TO_EMAIL = "info@rm-solution.it"
-CONTACT_FROM_EMAIL = "noreply@send.rm-solution.it"
+CONTACT_FROM_EMAIL = "noreply@rm-solution.it"
