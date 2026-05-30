@@ -61,17 +61,18 @@ const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image"       content={new URL(image, Astro.site)} />
 
-    <!-- Schema.org ProfessionalService -->
+    <!-- Schema.org LocalBusiness + ProfessionalService -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "RM-Solution di Regalia Marco",
-      "alternateName": "RM-Solution",
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "name": "RM-Solution",
+      "legalName": "RM-Solution di Regalia Marco",
       "url": "https://www.rm-solution.it",
       "logo": "https://www.rm-solution.it/logo.png",
       "image": "https://www.rm-solution.it/og-image.png",
       "telephone": "+39 347 540 0385",
       "email": "info@rm-solution.it",
+      "priceRange": "€€",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Gallarate",
@@ -79,18 +80,28 @@ const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
         "postalCode": "21013",
         "addressCountry": "IT"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.8206,
+        "longitude": 8.8257
+      },
       "founder": {
         "@type": "Person",
         "name": "Marco Regalia",
-        "jobTitle": "Senior System Administrator, Fractional CTO",
+        "jobTitle": "Senior System Administrator",
         "sameAs": ["https://www.linkedin.com/in/marcoregalia"]
       },
+      "employee": {
+        "@type": "Person",
+        "name": "Marco Regalia",
+        "jobTitle": "Senior System Administrator"
+      },
       "vatID": "IT04098630124",
-      "areaServed": ["IT"],
+      "areaServed": ["Milano", "Varese", "Monza", "Brianza", "Lombardia"],
       "knowsAbout": [
+        "VMware", "Proxmox", "WatchGuard", "MikroTik", "Wasabi",
         "Cloud Computing", "Virtualization", "Cybersecurity",
-        "Disaster Recovery", "VMware", "Microsoft Azure", "WatchGuard",
-        "Fractional CTO", "IT Consulting"
+        "Disaster Recovery", "Microsoft Azure", "Fractional CTO", "IT Consulting"
       ]
     })} />
 

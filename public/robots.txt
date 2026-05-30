@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /contatti/grazie/
 
 Sitemap: https://www.rm-solution.it/sitemap-index.xml
