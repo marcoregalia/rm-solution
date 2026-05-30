@@ -1,215 +1,255 @@
 ---
+/**
+ * Footer.astro — aggiornato con Logo SVG (variante light)
+ *
+ * MODIFICHE rispetto alla versione precedente:
+ *   1. Import del componente Logo
+ *   2. Sostituita immagine/testo con <Logo variant="light" height={36} />
+ *   3. Logo visibile su sfondo navy scuro
+ */
+import Logo from './Logo.astro';
+
 const year = new Date().getFullYear();
+
+const footerLinks = [
+  { href: '/chi-sono',    label: 'Chi sono'    },
+  { href: '/servizi',     label: 'Servizi'     },
+  { href: '/casi-studio', label: 'Casi studio' },
+  { href: '/contatti',    label: 'Contatti'    },
+];
+
+const legalLinks = [
+  { href: '/privacy/',     label: 'Privacy Policy'   },
+  { href: '/cookie/',      label: 'Cookie Policy'    },
+  { href: '/note-legali/', label: 'Note Legali'      },
+];
 ---
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-logo">RM<span>·</span>Solution</div>
-        <p class="footer-tag">
-          Direzione tecnica IT per PMI, startup e studi professionali.
-          <br />Marco Regalia, Fractional CTO & Senior IT Advisor.
-        </p>
-      </div>
+  <div class="footer-inner">
 
-      <div class="footer-col">
-        <div class="footer-col-label">Navigazione</div>
-        <ul>
-          <li><a href="/servizi/">Servizi</a></li>
-          <li><a href="/chi-sono/">Chi sono</a></li>
-          <li><a href="/casi-studio/">Casi studio</a></li>
-          <li><a href="/contatti/">Contatti</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <div class="footer-col-label">Contatti</div>
-        <ul>
-          <li><a href="mailto:info@rm-solution.it">info@rm-solution.it</a></li>
-          <li><a href="tel:+393475400385">+39 347 540 0385</a></li>
-          <li>21013 Gallarate (VA)</li>
-          <li>
-            <a href="https://www.linkedin.com/in/marcoregalia79" rel="noopener" target="_blank">
-              LinkedIn ↗
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <div class="footer-col-label">Legale</div>
-        <ul>
-          <li>
-            <a href="https://www.iubenda.com/privacy-policy/45743030"
-               class="iubenda-white iubenda-noiframe iubenda-embed"
-               title="Privacy Policy" target="_blank" rel="noopener">
-              Privacy policy
-            </a>
-          </li>
-          <li>
-            <a href="https://www.iubenda.com/privacy-policy/45743030/cookie-policy"
-               class="iubenda-white iubenda-noiframe iubenda-embed"
-               title="Cookie Policy" target="_blank" rel="noopener">
-              Cookie policy
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0);" onclick="if(typeof _iub !== 'undefined' && _iub.cs) _iub.cs.api.openPreferences();">
-              Preferenze cookie
-            </a>
-          </li>
-          <li><a href="/note-legali/">Note legali</a></li>
-        </ul>
+    <!-- Col 1: Logo + tagline + cert badges -->
+    <div class="footer-brand">
+      <a href="/" class="footer-logo-link" aria-label="RM-Solution homepage">
+        <Logo variant="light" height={36} />
+      </a>
+      <p class="footer-tagline">
+        IT Consulting &amp; Managed Services<br>
+        <span>Area Milano · Varese · Lombardia</span>
+      </p>
+      <div class="cert-badges">
+        <span class="badge">VMware VCP</span>
+        <span class="badge">WatchGuard</span>
+        <span class="badge">Proxmox</span>
+        <span class="badge">MikroTik</span>
+        <span class="badge">Wasabi S3</span>
       </div>
     </div>
 
-    <div class="footer-legal-block">
-      <div class="legal-item">
-        <span class="legal-label">Denominazione</span>
-        <span class="legal-val">RM-Solution di Regalia Marco</span>
-      </div>
-      <div class="legal-item">
-        <span class="legal-label">Partita IVA</span>
-        <span class="legal-val">IT 04098630124</span>
-      </div>
-      <div class="legal-item">
-        <span class="legal-label">Sede</span>
-        <span class="legal-val">21013 Gallarate (VA)</span>
-      </div>
+    <!-- Col 2: Links -->
+    <nav class="footer-nav" aria-label="Link footer">
+      <h3 class="footer-nav-title">Navigazione</h3>
+      <ul>
+        {footerLinks.map(({ href, label }) => (
+          <li><a href={href}>{label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Col 3: Contatti rapidi -->
+    <div class="footer-contact">
+      <h3 class="footer-nav-title">Contatti</h3>
+      <ul>
+        <li>
+          <a href="mailto:info@rm-solution.it">info@rm-solution.it</a>
+        </li>
+        <li>
+          <a href="https://www.rm-solution.it">www.rm-solution.it</a>
+        </li>
+      </ul>
     </div>
 
-    <div class="footer-meta">
-      <span>© {year} RM-Solution di Regalia Marco · Tutti i diritti riservati</span>
-      <span class="mono">v2.0 — built with Astro</span>
-    </div>
   </div>
 
-  <!-- Loader Iubenda per i link policy in pagina -->
-  <script is:inline type="text/javascript">
-    (function (w, d) {
-      var loader = function () {
-        var s = d.createElement("script"),
-            tag = d.getElementsByTagName("script")[0];
-        s.src = "https://cdn.iubenda.com/iubenda.js";
-        tag.parentNode.insertBefore(s, tag);
-      };
-      if (w.addEventListener) {
-        w.addEventListener("load", loader, false);
-      } else if (w.attachEvent) {
-        w.attachEvent("onload", loader);
-      } else {
-        w.onload = loader;
-      }
-    })(window, document);
-  </script>
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <p>© {year} RM-Solution di Regalia Marco — P.IVA IT 04098630124</p>
+    <nav aria-label="Link legali">
+      {legalLinks.map(({ href, label }, i) => (
+        <Fragment>
+          <a href={href}>{label}</a>
+          {i < legalLinks.length - 1 && <span aria-hidden="true"> · </span>}
+        </Fragment>
+      ))}
+    </nav>
+  </div>
 </footer>
+
+<!-- Loader Iubenda per i link policy in pagina -->
+<script is:inline type="text/javascript">
+  (function (w, d) {
+    var loader = function () {
+      var s = d.createElement("script"),
+          tag = d.getElementsByTagName("script")[0];
+      s.src = "https://cdn.iubenda.com/iubenda.js";
+      tag.parentNode.insertBefore(s, tag);
+    };
+    if (w.addEventListener) {
+      w.addEventListener("load", loader, false);
+    } else if (w.attachEvent) {
+      w.attachEvent("onload", loader);
+    } else {
+      w.onload = loader;
+    }
+  })(window, document);
+</script>
 
 <style>
   .site-footer {
-    background: var(--bg-darker);
-    color: #fff;
-    padding: 56px 0 32px;
+    background: #1b1c30;
+    color: #a8aac0;
+    padding-top: 3.5rem;
   }
-  .footer-grid {
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2.5rem;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
+    grid-template-columns: 1.8fr 1fr 1fr;
+    gap: 3rem;
   }
-  .footer-logo {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    margin-bottom: 12px;
-    color: #fff;
+
+  /* ── Brand col ── */
+  .footer-logo-link {
+    display: inline-flex;
+    text-decoration: none;
+    margin-bottom: 1rem;
   }
-  .footer-logo span { color: var(--blue); }
-  .footer-tag {
-    font-size: 13px;
-    color: var(--text-light);
+
+  .footer-tagline {
+    font-size: 0.85rem;
     line-height: 1.6;
-    max-width: 320px;
+    color: #8a8ca8;
+    margin: 0 0 1.25rem;
   }
-  .footer-col-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--text-light-muted);
-    letter-spacing: 0.08em;
+
+  .footer-tagline span {
+    color: #6a6c88;
+  }
+
+  .cert-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: rgba(58, 111, 181, 0.15);
+    color: #7aabde;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    margin-bottom: 16px;
-    font-weight: 500;
+    border-radius: 4px;
+    border: 1px solid rgba(58, 111, 181, 0.25);
   }
-  .footer-col ul {
+
+  /* ── Nav cols ── */
+  .footer-nav-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0 0 1rem;
+  }
+
+  .footer-nav ul,
+  .footer-contact ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-  }
-  .footer-col a, .footer-col li {
-    font-size: 13px;
-    color: #fff;
-    transition: color 0.2s;
-  }
-  .footer-col a { cursor: pointer; }
-  .footer-col a:hover { color: var(--blue); }
-
-  /* Blocco legale */
-  .footer-legal-block {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 24px 0;
-    margin-bottom: 24px;
-    border-top: 0.5px solid var(--rule-dark);
-    border-bottom: 0.5px solid var(--rule-dark);
-  }
-  .legal-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .legal-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--text-light-muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  .legal-val {
-    font-size: 12px;
-    color: var(--text-light);
-    font-weight: 500;
+    gap: 0.5rem;
   }
 
-  .footer-meta {
-    padding-top: 16px;
+  .footer-nav a,
+  .footer-contact a {
+    color: #8a8ca8;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.15s;
+  }
+
+  .footer-nav a:hover,
+  .footer-contact a:hover {
+    color: #7aabde;
+  }
+
+  /* ── Bottom bar ── */
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem;
     display: flex;
     justify-content: space-between;
-    font-size: 11px;
-    color: var(--text-light-muted);
+    align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
-  }
-  .footer-meta .mono {
-    font-family: var(--font-mono);
-    letter-spacing: 0.04em;
+    gap: 0.75rem;
   }
 
-  @media (max-width: 768px) {
-    .footer-grid {
+  .footer-bottom p {
+    margin: 0;
+    font-size: 0.78rem;
+    color: #5a5c78;
+  }
+
+  .footer-bottom nav {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    font-size: 0.78rem;
+  }
+
+  .footer-bottom nav a {
+    color: #5a5c78;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-bottom nav a:hover {
+    color: #8a8ca8;
+  }
+
+  .footer-bottom nav span {
+    color: #3a3c58;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .footer-inner {
       grid-template-columns: 1fr 1fr;
-      gap: 32px 24px;
     }
-    .footer-brand { grid-column: span 2; }
-    .footer-legal-block {
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+
+    .footer-brand {
+      grid-column: 1 / -1;
     }
   }
-  @media (max-width: 480px) {
-    .footer-legal-block {
+
+  @media (max-width: 600px) {
+    .footer-inner {
       grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 </style>

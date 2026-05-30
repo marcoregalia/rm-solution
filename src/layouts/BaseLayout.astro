@@ -13,7 +13,7 @@ export interface Props {
 const {
   title,
   description,
-  image = '/og-image.jpg',
+  image = '/og-image.png',
   canonical,
 } = Astro.props;
 
@@ -37,23 +37,29 @@ const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"  href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="apple-touch-icon"          href="/favicon-512.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={fullTitle} />
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonicalURL} />
+    <meta property="og:title"       content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site)} />
-    <meta property="og:locale" content="it_IT" />
-    <meta property="og:site_name" content={siteName} />
+    <meta property="og:image"       content={new URL(image, Astro.site)} />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale"      content="it_IT" />
+    <meta property="og:site_name"   content={siteName} />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:card"        content="summary_large_image" />
+    <meta property="twitter:url"         content={canonicalURL} />
+    <meta property="twitter:title"       content={fullTitle} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.site)} />
+    <meta property="twitter:image"       content={new URL(image, Astro.site)} />
 
     <!-- Schema.org ProfessionalService -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -62,6 +68,8 @@ const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
       "name": "RM-Solution di Regalia Marco",
       "alternateName": "RM-Solution",
       "url": "https://www.rm-solution.it",
+      "logo": "https://www.rm-solution.it/logo.png",
+      "image": "https://www.rm-solution.it/og-image.png",
       "telephone": "+39 347 540 0385",
       "email": "info@rm-solution.it",
       "address": {
@@ -115,8 +123,7 @@ const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
     <script is:inline type="text/javascript" src="https://cs.iubenda.com/autoblocking/4226928.js"></script>
     <script is:inline type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
 
-    <!-- Google Analytics 4 - bloccato finché Iubenda non rileva il consenso -->
-    <!-- L'autoblocking di Iubenda intercetta questo script e lo carica solo dopo il consenso utente -->
+    <!-- Google Analytics 4 — bloccato da Iubenda autoblocking fino al consenso -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-P6X8826TVQ"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];

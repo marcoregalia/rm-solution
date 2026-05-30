@@ -1,0 +1,81 @@
+---
+/**
+ * Logo.astro
+ * SVG logo inline - nitido a qualsiasi dimensione, zero richieste HTTP.
+ * 
+ * Props:
+ *   variant: 'dark' | 'light'
+ *     - 'dark'  → R in navy (#1b1c30), M e SOLUTION in blu (#3a6fb5) — per header su sfondo chiaro
+ *     - 'light' → R in bianco (#ffffff), M e SOLUTION in blu (#3a6fb5) — per footer su sfondo scuro
+ *   height: numero in px (default: 44 per header, 36 per footer)
+ *   class: classi aggiuntive opzionali
+ */
+interface Props {
+  variant?: 'dark' | 'light';
+  height?: number;
+  class?: string;
+}
+
+const { variant = 'dark', height = 44, class: className = '' } = Astro.props;
+
+const navyColor  = variant === 'light' ? '#ffffff' : '#1b1c30';
+const blueColor  = '#3a6fb5';
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 220 90"
+  height={height}
+  role="img"
+  aria-label="RM-Solution logo"
+  class={`rm-logo ${className}`}
+  style="display:block;"
+>
+  <!-- ═══ R ═══ -->
+  <!-- Vertical stroke -->
+  <rect x="8"  y="8"  width="13" height="74" fill={navyColor}/>
+  <!-- Top horizontal bar -->
+  <rect x="8"  y="8"  width="40" height="11" fill={navyColor}/>
+  <!-- Mid horizontal bar -->
+  <rect x="8"  y="42" width="34" height="10" fill={navyColor}/>
+  <!-- Bowl right curve (top) -->
+  <rect x="48" y="8"  width="10" height="17" fill={navyColor}/>
+  <!-- Bowl curve (bottom arc) -->
+  <rect x="42" y="25" width="16" height="17" fill={navyColor}/>
+  <!-- Leg diagonal -->
+  <polygon points="36,52 52,82 66,82 50,52" fill={navyColor}/>
+  <!-- Blue accent lines on R vertical stroke -->
+  <rect x="15" y="8"  width="3"  height="74" fill={blueColor}/>
+  <rect x="20" y="8"  width="3"  height="74" fill={blueColor}/>
+
+  <!-- ═══ M ═══ -->
+  <!-- Left vertical -->
+  <rect x="74"  y="8"  width="12" height="74" fill={blueColor}/>
+  <!-- Right vertical -->
+  <rect x="120" y="8"  width="12" height="74" fill={blueColor}/>
+  <!-- Left diagonal (down-right) -->
+  <polygon points="74,8 86,8 105,50 93,50"   fill={blueColor}/>
+  <!-- Right diagonal (down-left) -->
+  <polygon points="132,8 120,8 101,50 113,50" fill={blueColor}/>
+
+  <!-- ═══ SOLUTION (vertical, right side) ═══ -->
+  <text
+    x="156"
+    y="82"
+    font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-size="9.5"
+    font-weight="300"
+    letter-spacing="3.8"
+    fill={blueColor}
+    transform="rotate(-90 156 82)"
+  >SOLUTION</text>
+</svg>
+
+<style>
+  .rm-logo {
+    transition: opacity 0.2s ease;
+  }
+  a:hover .rm-logo {
+    opacity: 0.85;
+  }
+</style>

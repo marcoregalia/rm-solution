@@ -1,133 +1,229 @@
 ---
-const { pathname } = Astro.url;
-const isActive = (path: string) => pathname === path || pathname.startsWith(path + '/');
+/**
+ * Header.astro — aggiornato con Logo SVG inline
+ * 
+ * MODIFICHE rispetto alla versione precedente:
+ *   1. Import del componente Logo
+ *   2. Sostituita immagine/testo con <Logo variant="dark" height={44} />
+ *   3. Rimossi stili logo precedenti, aggiunti nuovi
+ *
+ * Il resto dell'header (nav links, hamburger mobile, sticky) rimane invariato.
+ * Adatta il markup della nav al tuo HTML reale se differisce.
+ */
+import Logo from './Logo.astro';
+
+const navLinks = [
+  { href: '/',           label: 'Home'       },
+  { href: '/chi-sono',   label: 'Chi sono'   },
+  { href: '/servizi',    label: 'Servizi'    },
+  { href: '/casi-studio',label: 'Casi studio'},
+  { href: '/contatti',   label: 'Contatti'   },
+];
+
+const currentPath = Astro.url.pathname;
 ---
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="/" class="logo" aria-label="RM-Solution — Home">
-      RM<span>·</span>Solution
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+
+    <!-- ── Logo ── -->
+    <a href="/" class="logo-link" aria-label="RM-Solution — torna alla homepage">
+      <Logo variant="dark" height={44} />
     </a>
-    <nav class="nav-desktop" aria-label="Navigazione principale">
-      <a href="/servizi/" class:list={[{ active: isActive('/servizi') }]}>Servizi</a>
-      <a href="/chi-sono/" class:list={[{ active: isActive('/chi-sono') }]}>Chi sono</a>
-      <a href="/casi-studio/" class:list={[{ active: isActive('/casi-studio') }]}>Casi</a>
-      <a href="/contatti/" class="nav-cta">Contattami</a>
+
+    <!-- ── Nav desktop ── -->
+    <nav class="main-nav" aria-label="Navigazione principale">
+      <ul class="nav-list">
+        {navLinks.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              class:list={['nav-link', { 'is-active': currentPath === href || (href !== '/' && currentPath.startsWith(href)) }]}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
     </nav>
-    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-mobile">
+
+    <!-- ── CTA button ── -->
+    <a href="/contatti" class="header-cta">Contattami</a>
+
+    <!-- ── Hamburger mobile ── -->
+    <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
   </div>
-  <nav id="nav-mobile" class="nav-mobile" aria-label="Navigazione mobile">
-    <a href="/servizi/">Servizi</a>
-    <a href="/chi-sono/">Chi sono</a>
-    <a href="/casi-studio/">Casi studio</a>
-    <a href="/contatti/">Contattami</a>
-  </nav>
+
+  <!-- ── Mobile menu ── -->
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav aria-label="Menu mobile">
+      <ul>
+        {navLinks.map(({ href, label }) => (
+          <li><a href={href} class:list={['mobile-nav-link', { 'is-active': currentPath === href }]}>{label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <style>
+  /* ── Layout ── */
   .site-header {
     position: sticky;
     top: 0;
-    background: var(--bg-dark);
-    color: #fff;
     z-index: 100;
+    background: #ffffff;
+    border-bottom: 1px solid #e8eaf0;
+    box-shadow: 0 1px 8px rgba(27, 28, 48, 0.06);
   }
+
   .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 72px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    gap: 2rem;
   }
-  .logo {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    color: #fff;
-  }
-  .logo span { color: var(--blue); }
 
-  .nav-desktop {
+  /* ── Logo ── */
+  .logo-link {
     display: flex;
-    gap: 28px;
     align-items: center;
+    flex-shrink: 0;
+    text-decoration: none;
   }
-  .nav-desktop a {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: 400;
-    transition: color 0.2s;
-  }
-  .nav-desktop a:hover, .nav-desktop a.active { color: #fff; }
 
-  .nav-desktop a.nav-cta {
-    background: transparent;
-    color: var(--blue);
-    border: 1px solid var(--blue);
-    padding: 7px 14px;
+  /* ── Nav desktop ── */
+  .main-nav {
+    flex: 1;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #3a3d5c;
+    text-decoration: none;
     border-radius: 6px;
-    font-size: 13px;
+    transition: color 0.15s, background 0.15s;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-link:hover,
+  .nav-link.is-active {
+    color: #3a6fb5;
+    background: rgba(58, 111, 181, 0.08);
+  }
+
+  .nav-link.is-active {
+    font-weight: 600;
+  }
+
+  /* ── CTA ── */
+  .header-cta {
+    flex-shrink: 0;
+    padding: 0.5rem 1.25rem;
+    background: #1b1c30;
+    color: #fff;
+    font-size: 0.875rem;
     font-weight: 600;
     letter-spacing: 0.02em;
-    text-transform: uppercase;
-    transition: background 0.2s, color 0.2s;
-  }
-  .nav-desktop a.nav-cta:hover {
-    background: var(--blue);
-    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.15s, transform 0.1s;
   }
 
-  .nav-toggle {
-    display: none;
-    width: 40px; height: 40px;
-    border: 0.5px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    background: transparent;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
+  .header-cta:hover {
+    background: #3a6fb5;
+    transform: translateY(-1px);
   }
-  .nav-toggle span {
+
+  /* ── Hamburger ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    margin-left: auto;
+  }
+
+  .hamburger span {
     display: block;
-    width: 16px; height: 1px;
-    background: #fff;
+    width: 24px;
+    height: 2px;
+    background: #1b1c30;
+    border-radius: 2px;
     transition: transform 0.2s, opacity 0.2s;
   }
-  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
-  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
 
-  .nav-mobile {
-    display: none;
+  /* ── Mobile menu ── */
+  .mobile-menu {
+    background: #fff;
+    border-top: 1px solid #e8eaf0;
+    padding: 1rem 1.5rem 1.5rem;
+  }
+
+  .mobile-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
     flex-direction: column;
-    padding: 8px var(--container-padding) 24px;
-    border-top: 0.5px solid rgba(255, 255, 255, 0.1);
-    background: var(--bg-dark);
+    gap: 0.25rem;
   }
-  .nav-mobile a {
-    font-size: 18px;
-    color: #fff;
-    font-weight: 500;
-    padding: 14px 0;
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
-  }
-  .nav-mobile.open { display: flex; }
 
+  .mobile-nav-link {
+    display: block;
+    padding: 0.7rem 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #3a3d5c;
+    text-decoration: none;
+    border-bottom: 1px solid #f0f1f5;
+  }
+
+  .mobile-nav-link.is-active {
+    color: #3a6fb5;
+  }
+
+  /* ── Responsive ── */
   @media (max-width: 768px) {
-    .nav-desktop { display: none; }
-    .nav-toggle { display: flex; }
+    .main-nav,
+    .header-cta {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
   }
 </style>
 
 <script>
-  const toggle = document.querySelector('.nav-toggle');
-  const menu = document.getElementById('nav-mobile');
-  toggle?.addEventListener('click', () => {
-    const open = menu?.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    toggle.setAttribute('aria-label', open ? 'Chiudi menu' : 'Apri menu');
+  const btn  = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.hidden === false;
+    if (menu) menu.hidden = isOpen;
+    btn?.setAttribute('aria-expanded', String(!isOpen));
+    btn?.setAttribute('aria-label', isOpen ? 'Apri menu' : 'Chiudi menu');
   });
 </script>

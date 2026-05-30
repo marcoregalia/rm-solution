@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 90" role="img" aria-label="RM-Solution">
+  <!-- R letterform - navy with blue accent lines -->
+  <g>
+    <!-- R vertical stroke -->
+    <rect x="8" y="10" width="12" height="70" fill="#ffffff"/>
+    <!-- R bowl top bar -->
+    <rect x="8" y="10" width="38" height="10" fill="#ffffff"/>
+    <!-- R bowl middle bar -->
+    <rect x="8" y="42" width="32" height="9" fill="#ffffff"/>
+    <!-- R bowl right curve (simplified) -->
+    <rect x="46" y="10" width="10" height="16" fill="#ffffff"/>
+    <rect x="40" y="26" width="16" height="10" fill="#ffffff"/>
+    <!-- R leg diagonal -->
+    <polygon points="34,51 50,80 63,80 47,51" fill="#ffffff"/>
+    <!-- Blue accent lines on R vertical -->
+    <rect x="14" y="10" width="3" height="70" fill="#3a6fb5"/>
+    <rect x="19" y="10" width="3" height="70" fill="#3a6fb5"/>
+  </g>
+  <!-- M letterform - blue -->
+  <g>
+    <!-- M left vertical -->
+    <rect x="72" y="10" width="12" height="70" fill="#3a6fb5"/>
+    <!-- M right vertical -->
+    <rect x="118" y="10" width="12" height="70" fill="#3a6fb5"/>
+    <!-- M left diagonal -->
+    <polygon points="72,10 84,10 102,46 90,46" fill="#3a6fb5"/>
+    <!-- M right diagonal -->
+    <polygon points="130,10 118,10 100,46 112,46" fill="#3a6fb5"/>
+  </g>
+  <!-- SOLUTION vertical text -->
+  <text x="152" y="80" 
+    font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" 
+    font-size="9.5" 
+    font-weight="300"
+    letter-spacing="3.5"
+    fill="#3a6fb5"
+    transform="rotate(-90, 152, 80)">SOLUTION</text>
+</svg>
