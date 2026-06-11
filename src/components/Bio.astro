@@ -1,15 +1,4 @@
 ---
-const certifications = [
-  { name: 'VMware VCP', meta: 'Foundation 6.7' },
-  { name: 'WatchGuard', meta: 'Base + Advanced' },
-  { name: 'MikroTik', meta: 'MTCNA' },
-  { name: 'Proxmox', meta: 'Certified' },
-  { name: 'Wasabi S3', meta: 'Certified Partner' },
-  { name: 'Libraesva ESG', meta: 'Certified' },
-  { name: 'Syneto', meta: 'Certified' },
-  { name: 'Microsoft Azure', meta: 'AZ-900 in corso' },
-  { name: 'Parallels RAS', meta: 'In corso' },
-];
 ---
 
 <section class="section" id="chi-sono">
@@ -38,24 +27,6 @@ const certifications = [
       </div>
     </div>
 
-    <div class="cert-section">
-      <span class="cert-label">— Certificazioni attive</span>
-      <div class="cert-grid">
-        {certifications.map((c) => (
-          <div class="cert">
-            <div class="cert-check">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20,6 9,17 4,12" />
-              </svg>
-            </div>
-            <div>
-              <div class="cert-name">{c.name}</div>
-              <div class="cert-meta">{c.meta}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
   </div>
 </section>
 
@@ -128,66 +99,10 @@ const certifications = [
     z-index: 1;
   }
 
-  .cert-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--blue-deep);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 500;
-    display: block;
-    margin-bottom: 18px;
-  }
-  .cert-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-  .cert {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px;
-    background: #fff;
-    border: 0.5px solid var(--rule);
-    border-radius: 8px;
-  }
-  .cert-check {
-    width: 22px;
-    height: 22px;
-    background: var(--blue-bg);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--blue-deep);
-    flex-shrink: 0;
-  }
-  .cert-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: -0.005em;
-  }
-  .cert-meta {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-  }
-
   @media (max-width: 700px) {
     .bio-grid {
       grid-template-columns: 1fr;
       gap: 24px;
-    }
-    .cert-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  @media (max-width: 460px) {
-    .cert-grid {
-      grid-template-columns: 1fr;
     }
   }
 </style>
