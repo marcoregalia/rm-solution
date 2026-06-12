@@ -1,4 +1,8 @@
 ---
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
 ---
 
 <section class="section" id="chi-sono">
@@ -10,39 +14,46 @@
       <div class="bio-content">
         <p>
           Ho iniziato nel 2007 in Openware, una società di servizi informatici con sede in Lombardia.
-          Facevo il tecnico di primo livello — helpdesk, interventi dal vivo dai clienti tra Lombardia,
+          Facevo il tecnico di primo livello come helpdesk, interventi in loco dai clienti tra Lombardia,
           Piemonte e Liguria, e i primi server VMware quando la virtualizzazione era ancora una novità.
-          Non era un lavoro glamour, ma è lì che ho imparato come funziona davvero un'infrastruttura
-          sotto pressione.
+          Partire dal basso mi ha insegnato quello che nessun corso insegna: cosa succede davvero
+          quando un sistema si ferma e l'azienda aspetta.
         </p>
         <p>
           Nel 2013 sono diventato socio di Openware. Nel 2016 abbiamo fuso tre realtà per costituire
           BlendIT, una società di servizi IT con datacenter SAAS proprietario e clienti di livello
-          enterprise. In quegli anni ho progettato e messo in produzione infrastrutture che altri
+          enterprise. In quegli anni </p> {!compact && ( <p> progettato e messo in produzione infrastrutture che altri
           avrebbero delegato a team interi: un cluster SQL ad alta disponibilità, una piattaforma VDI
           per 60 postazioni con Parallels RAS, la centralizzazione di oltre 80 workstation per uno
           studio di architettura milanese — che da quel momento i propri collaboratori potevano
           raggiungere da qualsiasi parte del mondo.
         </p>
-        <p>
-          Nel 2025 ho scelto di costruire qualcosa di mio.
-        </p>
-        <p>
-          RM-Solution nasce da una convinzione semplice: le PMI italiane meritano lo stesso livello
-          di competenza tecnica delle grandi aziende, senza dover assumere un IT manager a tempo
-          pieno o affidarsi a un call center. Quando mi contatti, parli con me — e se prendo un
-          impegno, lo porto a termine io.
-        </p>
-        <p>
-          L'obiettivo non è restare un freelance solitario. Voglio costruire un team piccolo e
-          selezionato, capace di seguire clienti con la stessa attenzione che ho sempre dedicato
-          al lavoro diretto.
-        </p>
-        <blockquote class="bio-callout">
-          Diciotto anni di esperienza reale, non di curriculum. Ho fatto il tecnico, ho gestito
-          fornitori enterprise, ho co-fondato un gruppo IT. Quando chiami RM-Solution, parli con
-          chi fa il lavoro
-        </blockquote>
+        
+          <>
+            <p>
+              Nel 2025 ho scelto di costruire qualcosa di mio.
+            </p>
+            <p>
+              RM-Solution nasce da una convinzione semplice: le PMI italiane meritano lo stesso livello
+              di competenza tecnica delle grandi aziende, senza dover assumere un IT manager a tempo
+              pieno o affidarsi a un call center. Quando mi contatti, parli con me — e se prendo un
+              impegno, lo porto a termine io.
+            </p>
+            <p>
+              L'obiettivo non è restare un freelance solitario. Voglio costruire un team piccolo e
+              selezionato, capace di seguire clienti con la stessa attenzione che ho sempre dedicato
+              al lavoro diretto.
+            </p>
+            <blockquote class="bio-callout">
+              Diciotto anni di esperienza reale, non di curriculum. Ho fatto il tecnico, ho gestito
+              fornitori enterprise, ho co-fondato un gruppo IT. Quando chiami RM-Solution, parli con
+              chi fa il lavoro
+            </blockquote>
+          </>
+        )}
+        {compact && (
+          <a href="/chi-sono/" class="read-more">Continua a leggere &rarr;</a>
+        )}
       </div>
       <div class="bio-card">
         <div class="bio-avatar">MR</div>
@@ -81,6 +92,18 @@
     color: var(--text);
     font-style: normal;
     max-width: 540px;
+  }
+  .read-more {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blue-deep);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .read-more:hover {
+    text-decoration: underline;
   }
   .bio-card {
     background: var(--bg-dark);
