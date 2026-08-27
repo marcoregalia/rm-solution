@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Services from '../components/Services.astro';
-import ContactCTA from '../components/ContactCTA.astro';
 ---
 
 <BaseLayout
@@ -13,18 +11,181 @@ import ContactCTA from '../components/ContactCTA.astro';
       <span class="page-num">— SERVIZI</span>
       <h1>Cinque aree, <i>un solo</i> punto di contatto.</h1>
       <p class="page-lede">
-        Ogni servizio è progettato per produrre risultati misurabili, documentati e ripetibili.
-        Niente promesse vaghe, niente report di facciata. La consulenza si paga, ma quello che serve
-        davvero — la decisione presa bene la prima volta — non ha prezzo.
+        Ogni servizio produce risultati misurabili, documentati e ripetibili. Non vendo pacchetti
+        preconfezionati: guardo com'è fatta la tua infrastruttura, capisco dove fa male e intervengo
+        dove serve. Quando mi contatti, parli con chi fa il lavoro.
       </p>
     </div>
   </section>
 
-  <Services showAll={true} />
-  <ContactCTA />
+  <!-- 01 — Infrastruttura & Cloud -->
+  <section class="section" id="infrastruttura-cloud">
+    <div class="container">
+      <span class="section-num">— 01 Infrastruttura & Cloud</span>
+      <p class="svc-subtitle">Virtualizzazione, alta disponibilità, cloud ibrido</p>
+      <h2>Infrastruttura & Cloud</h2>
+      <p class="section-lede">
+        Progetto e gestisco l'infrastruttura su cui gira l'azienda: server, storage, macchine virtuali.
+        L'obiettivo non è avere l'hardware più recente, ma un sistema che regge quando serve e che non
+        ti costringe a rifare tutto ogni tre anni.
+      </p>
+      <ul class="svc-list">
+        <li>Consolidamento di server fisici in ambienti virtualizzati VMware o Proxmox</li>
+        <li>Cluster ad alta disponibilità, dove un guasto hardware non ferma il lavoro</li>
+        <li>Storage centralizzato su NAS e SAN (Synology, QNAP, NetApp, Fujitsu, HPE)</li>
+        <li>Migrazioni verso cloud ibrido, quando ha senso — non per moda</li>
+        <li>Dimensionamento onesto: quello che serve davvero, non quello che costa di più</li>
+      </ul>
+      <div class="svc-meta">
+        <div class="meta-row">
+          <span class="meta-label">Tecnologie</span>
+          <span class="meta-value">VMware (VCP), Proxmox (certificato), Syneto, Azure, Parallels RAS</span>
+        </div>
+        <div class="meta-row result-row">
+          <span class="meta-label">Il risultato</span>
+          <span class="meta-value">Un'infrastruttura che conosci, con costi prevedibili e senza sorprese. E qualcuno che sa esattamente com'è fatta quando qualcosa va storto.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 — Sicurezza & Backup -->
+  <section class="section alt" id="sicurezza-backup">
+    <div class="container">
+      <span class="section-num">— 02 Sicurezza & Backup</span>
+      <p class="svc-subtitle">Protezione perimetrale, disaster recovery testato</p>
+      <h2>Sicurezza & Backup</h2>
+      <p class="section-lede">
+        Un backup che non è mai stato testato non è un backup: è una speranza. Mi occupo di proteggere
+        i dati aziendali su due fronti — impedire che qualcuno entri, e garantire che se qualcosa va
+        perso lo puoi recuperare davvero.
+      </p>
+      <ul class="svc-list">
+        <li>Firewall perimetrali con servizi UTM attivi (WatchGuard, Fortinet, MikroTik)</li>
+        <li>Backup locale e off-site con retention definita e verifica giornaliera dei log</li>
+        <li>Disaster recovery con backup immutabili su Wasabi S3 — a prova di ransomware</li>
+        <li>Test di ripristino documentati, con tempi di recupero (RTO) reali e misurati</li>
+        <li>Crittografia dei dati locali (BitLocker) e gestione centralizzata antivirus</li>
+      </ul>
+      <div class="svc-meta">
+        <div class="meta-row">
+          <span class="meta-label">Tecnologie</span>
+          <span class="meta-value">WatchGuard, Veeam, Acronis, Wasabi S3 (immutabilità), Synology Active Backup, ESET, Kaspersky</span>
+        </div>
+        <div class="meta-row result-row">
+          <span class="meta-label">Il risultato</span>
+          <span class="meta-value">Sai quanto tempo ti serve per tornare operativo dopo un disastro, perché lo abbiamo misurato — non perché lo speri.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 — Direzione tecnica (Fractional CTO) -->
+  <section class="section" id="fractional-cto">
+    <div class="container">
+      <span class="section-num">— 03 Direzione tecnica</span>
+      <p class="svc-subtitle">Roadmap IT, vendor management, decisioni tecniche</p>
+      <h2>Direzione tecnica <span class="accent">(Fractional CTO)</span></h2>
+      <p class="section-lede">
+        A volte non serve un tecnico in più: serve qualcuno che decida bene. Affianco imprenditori e
+        team che devono prendere decisioni tecniche importanti — un investimento, un cambio di fornitore,
+        una crescita — senza assumere un CTO a tempo pieno prima del momento giusto.
+      </p>
+      <ul class="svc-list">
+        <li>Roadmap IT allineata agli obiettivi dell'azienda, non alle mode del settore</li>
+        <li>Selezione e gestione dei fornitori: chi fa cosa, a che prezzo, con che garanzie</li>
+        <li>Analisi di infrastrutture esistenti e piani di rientro dal debito tecnico</li>
+        <li>Supporto nelle decisioni critiche: cloud sì o no, cosa internalizzare</li>
+        <li>Da 1 a 3 giornate al mese, con continuità</li>
+      </ul>
+      <div class="svc-meta">
+        <div class="meta-row result-row">
+          <span class="meta-label">Il risultato</span>
+          <span class="meta-value">Decisioni tecniche prese con competenza, la prima volta. Meno errori costosi, meno fornitori che si scaricano le responsabilità a vicenda.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 — Microsoft 365 -->
+  <section class="section alt" id="microsoft-365">
+    <div class="container">
+      <span class="section-num">— 04 Microsoft 365</span>
+      <p class="svc-subtitle">Posta, migrazioni, ambienti ibridi</p>
+      <h2>Microsoft 365</h2>
+      <p class="section-lede">
+        La posta elettronica è il servizio che, se si ferma, ferma l'azienda. Mi occupo di migrare,
+        gestire e mettere in sicurezza gli ambienti Microsoft 365, comprese le migrazioni più delicate
+        — quelle che devono avvenire senza che nessuno se ne accorga.
+      </p>
+      <ul class="svc-list">
+        <li>Migrazioni da Exchange on-premise a Exchange Online, senza interruzioni</li>
+        <li>Configurazione di ambienti ibridi e coesistenza tra sistemi</li>
+        <li>Messa in sicurezza della posta: DKIM, SPF, DMARC configurati correttamente</li>
+        <li>Gestione di utenti, licenze e policy in ambienti multi-sede</li>
+        <li>Protezione anti-spam e anti-phishing a livello di gateway (Libraesva)</li>
+      </ul>
+      <div class="svc-meta">
+        <div class="meta-row">
+          <span class="meta-label">Tecnologie</span>
+          <span class="meta-value">Exchange Online, Microsoft 365, Exchange on-premise, Libraesva (certificato ESG)</span>
+        </div>
+        <div class="meta-row result-row">
+          <span class="meta-label">Il risultato</span>
+          <span class="meta-value">Una posta che funziona, protetta dalle minacce più comuni, e migrazioni che avvengono senza il fermo che tutti temono.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 — Assistenza gestita (MSP) -->
+  <section class="section" id="assistenza-gestita">
+    <div class="container">
+      <span class="section-num">— 05 Assistenza gestita</span>
+      <p class="svc-subtitle">Monitoraggio proattivo, manutenzione continuativa</p>
+      <h2>Assistenza gestita <span class="accent">(MSP)</span></h2>
+      <p class="section-lede">
+        La differenza tra chiamare un tecnico quando qualcosa si rompe e avere qualcuno che se ne accorge
+        prima. L'assistenza gestita significa che l'infrastruttura è monitorata di continuo e i problemi
+        si risolvono spesso prima che tu li noti.
+      </p>
+      <ul class="svc-list">
+        <li>Monitoraggio proattivo di server, backup, connettività (RMM)</li>
+        <li>Verifica giornaliera dello stato dei sistemi e dei log di backup</li>
+        <li>Interventi correttivi programmati, prima che il problema diventi un fermo</li>
+        <li>Gestione centralizzata di antivirus, aggiornamenti, policy di dominio</li>
+        <li>Un punto di contatto unico: parli sempre con me, non con un ticket</li>
+      </ul>
+      <div class="svc-meta">
+        <div class="meta-row">
+          <span class="meta-label">Tecnologie</span>
+          <span class="meta-value">Site24x7, Atera, Active Directory, consolle cloud ESET</span>
+        </div>
+        <div class="meta-row result-row">
+          <span class="meta-label">Il risultato</span>
+          <span class="meta-value">Meno fermi, meno emergenze, meno "chiamo il tecnico e aspetto". L'IT diventa qualcosa a cui non devi pensare.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA finale -->
+  <section class="page-cta dark-section">
+    <div class="glow-tr"></div>
+    <div class="container">
+      <h2>Non sai da quale area <span class="accent">partire?</span></h2>
+      <p class="cta-text">
+        Normale. Spesso il problema che vedi non è quello vero. Trenta minuti di conversazione,
+        senza impegno: mi racconti la situazione, ti dico onestamente da dove conviene cominciare.
+        Se non sono la persona giusta, ti indico chi può.
+      </p>
+      <a href="/contatti/" class="btn btn-outline">Prenota una call gratuita →</a>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
+  /* Page hero */
   .page-hero {
     padding-top: clamp(48px, 8vw, 96px);
     padding-bottom: clamp(48px, 8vw, 96px);
@@ -49,7 +210,99 @@ import ContactCTA from '../components/ContactCTA.astro';
   .page-lede {
     font-size: clamp(15px, 1.6vw, 17px);
     line-height: 1.6;
-    color: var(--ink-soft);
+    color: var(--text-soft);
     max-width: 600px;
+  }
+
+  /* Service sections */
+  .svc-subtitle {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--blue-deep);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .svc-list {
+    list-style: none;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .svc-list li {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-soft);
+    padding-left: 20px;
+    position: relative;
+  }
+  .svc-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+  }
+
+  /* Meta rows (Tecnologie / Risultato) */
+  .svc-meta {
+    border-top: 0.5px solid var(--rule);
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .meta-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    padding-top: 2px;
+  }
+  .meta-value {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-soft);
+  }
+  .result-row .meta-value {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Closing CTA */
+  .page-cta h2 {
+    font-size: clamp(28px, 4.5vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: #fff;
+    margin-bottom: 16px;
+    max-width: 540px;
+  }
+  .cta-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-light);
+    max-width: 500px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 600px) {
+    .meta-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
   }
 </style>
