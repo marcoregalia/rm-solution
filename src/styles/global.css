@@ -289,37 +289,6 @@ h1 .accent, h2 .accent, h3 .accent {
 }
 
 /* ============================================
-   Tags / Pills
-   ============================================ */
-
-.tag-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 12px;
-  background: var(--blue-bg);
-  border: 0.5px solid var(--blue-border);
-  border-radius: 20px;
-}
-
-.tag-pill-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--blue);
-  box-shadow: 0 0 8px var(--blue);
-  flex-shrink: 0;
-}
-
-.tag-pill-text {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--blue);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-/* ============================================
    Forms
    ============================================ */
 
